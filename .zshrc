@@ -1,10 +1,18 @@
 # Zplug configuration
-export ZPLUG_HOME=/Users/crr/.zplug
+export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
 
+# History
+export SAVEHIST=200000
+export HISTFILE=~/.zsh_history
+setopt inc_append_history
+setopt share_history
+autoload colors && colors
+
 # Zplug themes
-zplug "themes/robbyrussell", from:oh-my-zsh
+zplug "themes/robbyrussell", from:oh-my-zsh, as:theme
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
+
 # Zplug plugins
 zplug "plugins/brew", from:oh-my-zsh
 zplug "plugins/bundler", from:oh-my-zsh
@@ -22,6 +30,7 @@ zplug "rupa/z", use:z.sh
 zplug "plugins/zeus", from:oh-my-zsh
 zplug "zsh-users/zsh-autosuggestions", defer:2
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
 # Install missing plugins
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -31,7 +40,7 @@ if ! zplug check --verbose; then
 fi
 
 # Load the plugins in the terminal
-zplug load
+zplug load # --verbose
 
 # Rbenv configuration
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -54,17 +63,8 @@ zmodload zsh/terminfo
 bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
-# Share the terminal history. SAVEHIST is the number of lines to save, so set it really high.
-# export SAVEHIST=200000
-# export HISTFILE=~/.zsh_history
-# setopt inc_append_history
-# setopt share_history
-
 # Postgress app
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# Mysql 5.6
-export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # JRuby
 export JRUBY_OPTS="--dev -J-noverify"
@@ -80,5 +80,5 @@ export JAVA_OPTIONS="-Xmx2g"
 export PATH="/usr/local/sbin:$PATH"
 
 # Configurations
-# export DISABLE_SPRING=true
+export DISABLE_SPRING=true
 export EDITOR=vim
