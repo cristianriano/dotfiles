@@ -10,11 +10,12 @@ noremap <leader>t :NERDTreeToggle <CR>
 noremap <leader>f :NERDTreeFind <CR>
 
 set number 
-set hls
-set ic
+set hls " Highlight search
+set ic " Ignore case
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set cursorline
 
 set autoindent
 set smartindent
