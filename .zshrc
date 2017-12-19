@@ -70,7 +70,8 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export JRUBY_OPTS="--dev -J-noverify"
 
 # Java version
-export JAVA_OPTIONS="-Xmx2g"
+export JAVA_OPTIONS="-Xmx2048m"
+export JAVA_OPTS="-Xmx2048m"
 
 # Imagemagick
 # export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
