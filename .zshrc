@@ -1,3 +1,6 @@
+#	 Flags
+[ "$(uname)" = "Linux" ] && IS_LINUX="true"
+
 # Zplug configuration
 export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
@@ -88,3 +91,10 @@ export PATH="/usr/local/sbin:$PATH"
 # Configurations
 export DISABLE_SPRING=true
 export EDITOR=vim
+
+# Aliases
+alias ll="ls -l -A"
+if [ -n IS_LINUX ]; then
+	alias pbcopy="xclip -sel clip"
+fi
+
