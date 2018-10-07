@@ -3,7 +3,7 @@ export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
 
 # History
-export SAVEHIST=200000
+export SAVEHIST=2000000
 export HISTFILE=~/.zsh_history
 setopt inc_append_history
 setopt share_history
@@ -50,6 +50,11 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
+# Pyenv configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Phantomenv configuration
 export PATH="$HOME/.phantomenv/bin:$PATH"
 eval "$(phantomenv init -)"
@@ -64,7 +69,7 @@ bindkey "^[[A" history-substring-search-up
 bindkey "^[[B" history-substring-search-down
 
 # Postgress app
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+# export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # JRuby
 export JRUBY_OPTS="--dev -J-noverify"
