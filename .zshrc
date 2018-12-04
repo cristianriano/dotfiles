@@ -87,6 +87,7 @@ export JAVA_OPTS="-Xmx2048m"
 
 # Personal paths
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.git-custom:$PATH"
 
 # Configurations
 export DISABLE_SPRING=true
@@ -94,7 +95,7 @@ export EDITOR=vim
 
 # Aliases
 alias ll="ls -l -A"
-if [ -n IS_LINUX ]; then
+if [ -n "$IS_LINUX" ]; then
 	alias pbcopy="xclip -sel clip"
 fi
 
