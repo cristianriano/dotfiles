@@ -1,13 +1,5 @@
-execute pathogen#infect()  
-
 filetype on " Detect type of file
 syntax on " Auto highlight syntax
-
-let NERDTreeShowHidden=1
-let mapleader=',' 
-
-noremap <leader>t :NERDTreeToggle <CR> " Map to specific actions of NERDTree
-noremap <leader>f :NERDTreeFind <CR>
 
 set number " Show line numbers
 set hls " Highlight search
