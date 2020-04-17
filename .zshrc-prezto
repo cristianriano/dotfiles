@@ -1,11 +1,6 @@
 ## Locale
 export LC_ALL=en_US.UTF-8
 
-# Prezto init
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 ## Compinstall
 zstyle :compinstall filename '/Users/cristian/.zshrc'
 autoload -Uz compinit
@@ -19,6 +14,11 @@ setopt beep
 setopt inc_append_history
 setopt share_history
 autoload colors && colors
+
+## Prezto init
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 ## ENV variables
 export EDITOR=vim

@@ -42,9 +42,9 @@ zstyle ':prezto:load' pmodule \
   'fasd' \
   'ruby' \
   'node' \
-  'autosuggestions' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'autosuggestions' \
   'prompt'
 
 #
@@ -52,7 +52,7 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the query found color.
-# zstyle ':prezto:module:autosuggestions:color' found ''
+zstyle ':prezto:module:autosuggestions:color' found 'fg=1'
 
 #
 # Completions
