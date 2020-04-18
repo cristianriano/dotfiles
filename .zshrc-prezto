@@ -41,6 +41,9 @@ export JAVA_OPTS="-Xmx2048m"
 
 ## Aliases
 alias ll="ls -l -A"
-alias postgres_config="docker run --name postgress -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:11.7"
+alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:10.6"
+alias postgres_start="docker start postgres"
 alias gst="git status"
 alias ga="git add"
+alias glog="git log"
+alias bi="bundle install"
