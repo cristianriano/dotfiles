@@ -1,6 +1,8 @@
 ## Locale
 export LC_ALL=en_US.UTF-8
 
+declare -ga dotfiles=(".gemrc" ".vimrc" ".zpreztorc" Brewfile "com.googlecode.iterm2.plist")
+
 ## Compinstall
 zstyle :compinstall filename '/Users/cristian/.zshrc'
 autoload -Uz compinit
@@ -46,10 +48,17 @@ export JAVA_OPTIONS="-Xmx2048m"
 export JAVA_OPTS="-Xmx2048m"
 
 ## Aliases
+# Utils
 alias ll="ls -l -A"
+# Postgres
 alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:10.6"
 alias postgres_start="docker start postgres"
+# Git
 alias gst="git status"
 alias ga="git add"
 alias glog="git log --oneline --decorate --graph"
+# Bundle
 alias bi="bundle install --jobs=4"
+# Dotfiles
+alias dotfiles_unlink="for file in $dotfiles; do unlink ~/$file; done"
+alias dotfiles_link="for file in $dotfiles; do ln -s ~/.dotfiles/$file ~/$file; done"
