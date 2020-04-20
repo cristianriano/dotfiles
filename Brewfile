@@ -14,6 +14,8 @@ brew "libpq", link: true
 brew "libssh2"
 # Open source relational database management system
 brew "mysql-client"
+# Python version management
+brew "pyenv"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
