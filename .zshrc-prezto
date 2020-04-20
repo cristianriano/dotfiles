@@ -24,7 +24,11 @@ fi
 ## Theme powerlevel9k config
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator load command_execution_time time)
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.5
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.5 # Show execution time if > 0.5s
+# Truncate dir /usr/share/plasma -> /u/s/plasma
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 ## Rbenv configuration
 export PATH="$HOME/.rbenv/bin:$PATH"
