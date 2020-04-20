@@ -1,7 +1,9 @@
 ## Locale
 export LC_ALL=en_US.UTF-8
 
+## Global ENV
 declare -ga dotfiles=(".gemrc" ".vimrc" ".zpreztorc" Brewfile "com.googlecode.iterm2.plist")
+declare -g DOTFILES_HOME="$HOME/dotfiles"
 
 ## Compinstall
 zstyle :compinstall filename '/Users/cristian/.zshrc'
@@ -24,7 +26,8 @@ fi
 
 ## Theme powerlevel9k config
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator load time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator load command_execution_time time)
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.5
 
 ## Editors
 export EDITOR=vim
@@ -47,6 +50,21 @@ eval "$(jenv init -)"
 export JAVA_OPTIONS="-Xmx2048m"
 export JAVA_OPTS="-Xmx2048m"
 
+## Functions
+# Dotfiles
+function dotfiles_link () {
+  for file in $dotfiles; do ln -s $DOTFILES_HOME/$file ~/$file; done
+}
+function dotfiles_unlink () {
+  for file in $dotfiles
+  do
+    if [[ -f "$HOME/$file" ]]
+    then
+      unlink "$HOME/$file"
+    fi
+  done
+}
+
 ## Aliases
 # Utils
 alias ll="ls -l -A"
@@ -59,6 +77,3 @@ alias ga="git add"
 alias glog="git log --oneline --decorate --graph"
 # Bundle
 alias bi="bundle install --jobs=4"
-# Dotfiles
-alias dotfiles_unlink="for file in $dotfiles; do unlink ~/$file; done"
-alias dotfiles_link="for file in $dotfiles; do ln -s ~/.dotfiles/$file ~/$file; done"
