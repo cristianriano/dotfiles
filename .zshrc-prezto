@@ -1,6 +1,7 @@
 ## Global ENV
-declare -ga dotfiles=(.gemrc .vimrc .zpreztorc Brewfile com.googlecode.iterm2.plist .zshrc .zprofile)
+declare -ga dotfiles=(.gemrc .vimrc .zpreztorc Brewfile com.googlecode.iterm2.plist .zshrc .zprofile .tmux.conf)
 declare -g DOTFILES_HOME="$HOME/dotfiles"
+export SHELL='/bin/zsh'
 
 ## Compinstall
 zstyle :compinstall filename '/Users/cristian/.zshrc'
@@ -79,3 +80,7 @@ alias gd="git diff"
 alias glog="git log --oneline --decorate --graph"
 # Bundle
 alias bi="bundle install --jobs=4"
+# Tmux
+alias tmuxa="tmux attach"
+alias tmuxl="tmux ls"
+alias tmuxn="tmux new"

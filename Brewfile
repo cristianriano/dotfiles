@@ -16,6 +16,8 @@ brew "libssh2"
 brew "mysql-client"
 # Python version management
 brew "pyenv"
+# Terminal multiplexer
+brew "tmux"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
