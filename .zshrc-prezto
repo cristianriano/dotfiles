@@ -1,8 +1,5 @@
-## Locale
-export LC_ALL=en_US.UTF-8
-
 ## Global ENV
-declare -ga dotfiles=(".gemrc" ".vimrc" ".zpreztorc" Brewfile "com.googlecode.iterm2.plist" ".zshrc")
+declare -ga dotfiles=(.gemrc .vimrc .zpreztorc Brewfile com.googlecode.iterm2.plist .zshrc .zprofile)
 declare -g DOTFILES_HOME="$HOME/dotfiles"
 
 ## Compinstall
@@ -28,11 +25,6 @@ fi
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator load command_execution_time time)
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.5
-
-## Editors
-export EDITOR=vim
-export VISUAL=code
-export PAGER=less
 
 ## Rbenv configuration
 export PATH="$HOME/.rbenv/bin:$PATH"
@@ -74,6 +66,7 @@ alias postgres_start="docker start postgres"
 # Git
 alias gst="git status"
 alias ga="git add"
+alias gd="git diff"
 alias glog="git log --oneline --decorate --graph"
 # Bundle
 alias bi="bundle install --jobs=4"
