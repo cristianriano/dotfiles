@@ -1,1 +1,1 @@
-/Users/cristian/dotfiles/.zshrc-prezto
+./.zshrc-prezto

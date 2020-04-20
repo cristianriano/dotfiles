@@ -60,9 +60,9 @@ function dotfiles_link () {
 function dotfiles_unlink () {
   for file in $dotfiles
   do
-    if [[ -f "$HOME/$file" ]]
-    then
-      unlink "$HOME/$file"
+    local file_path="$HOME/$file"
+    if [[ -h $file_path ]] then; unlink $file_path
+    elif [[ -f $file_path ]] then; rm $file_path
     fi
   done
 }
