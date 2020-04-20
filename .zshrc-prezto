@@ -2,7 +2,7 @@
 export LC_ALL=en_US.UTF-8
 
 ## Global ENV
-declare -ga dotfiles=(".gemrc" ".vimrc" ".zpreztorc" Brewfile "com.googlecode.iterm2.plist")
+declare -ga dotfiles=(".gemrc" ".vimrc" ".zpreztorc" Brewfile "com.googlecode.iterm2.plist" ".zshrc")
 declare -g DOTFILES_HOME="$HOME/dotfiles"
 
 ## Compinstall
