@@ -1,12 +1,7 @@
 ## Global ENV
-declare -ga dotfiles=(.gemrc .vimrc .zpreztorc Brewfile com.googlecode.iterm2.plist .zshrc .zprofile .tmux.conf)
+declare -ga dotfiles=(.gemrc .vimrc .zpreztorc .zshrc .zprofile .tmux.conf)
 declare -g DOTFILES_HOME="$HOME/dotfiles"
 export SHELL='/bin/zsh'
-
-## Compinstall
-zstyle :compinstall filename '/Users/cristian/.zshrc'
-autoload -Uz compinit
-compinit
 
 ## History
 HISTFILE=~/.histfile
@@ -20,6 +15,11 @@ autoload colors && colors
 ## Prezto init
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+## Keybindings
+if [[ -f "$DOTFILES_HOME/keybindings.zsh" ]]; then
+  source "$DOTFILES_HOME/keybindings.zsh"
 fi
 
 ## Theme powerlevel9k config
