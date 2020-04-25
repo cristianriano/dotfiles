@@ -1,0 +1,135 @@
+## History
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=10000
+setopt beep
+setopt inc_append_history
+setopt share_history
+autoload colors && colors
+
+### Load Zinit
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# patch-dl: Download and apply patches. ice: `dl` `patch`
+# as-monitor: Auto-download of last version. ice: `as"monitor"`
+# bin-gem-node: Executable not on PATH. `fbin` ice
+zinit light-mode for \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-bin-gem-node
+
+## Modules
+zinit light zdharma/history-search-multi-word
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
+zinit light zsh-users/zsh-autosuggestions
+
+# Block adding completions to be run at the end by zinit
+zinit ice blockf; zinit light zsh-users/zsh-completions
+
+# Load the pure theme, with zsh-async library that's bundled with it.
+# zinit ice pick"async.zsh" src"pure.zsh"
+# zinit light sindresorhus/pure
+
+## Theme
+zinit ice depth=1; zinit light Powerlevel9k/powerlevel9k
+# Config
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator load command_execution_time time)
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.5 # Show execution time if > 0.5s
+# Truncate dir /usr/share/plasma -> /u/s/plasma
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+# Syntax highlight must be the last one
+zinit light zdharma/fast-syntax-highlighting
+
+autoload -Uz compinit
+compinit
+
+# Replay compdefs to be done after compinit
+zinit cdreplay -q
+
+### End Load Zinit
+
+## Global ENV
+declare -ga dotfiles=(.gemrc .vimrc .zpreztorc .zshrc .zprofile .tmux.conf)
+declare -g DOTFILES_HOME="$HOME/dotfiles"
+export SHELL='/bin/zsh'
+
+## Keybindings
+if [[ -f "$DOTFILES_HOME/keybindings.zsh" ]]; then
+  source "$DOTFILES_HOME/keybindings.zsh"
+fi
+
+## Rbenv configuration
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+## Nodenv configuration
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+
+# Pyenv configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+## Jenv configuration
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+## Java version
+export JAVA_OPTIONS="-Xmx2048m"
+export JAVA_OPTS="-Xmx2048m"
+
+## Functions
+# Dotfiles
+function dotfiles_link () {
+  for file in $dotfiles; do ln -s $DOTFILES_HOME/$file ~/$file; done
+}
+function dotfiles_unlink () {
+  for file in $dotfiles
+  do
+    local file_path="$HOME/$file"
+    if [[ -h $file_path ]] then; unlink $file_path
+    elif [[ -f $file_path ]] then; rm $file_path
+    fi
+  done
+}
+
+## Aliases
+# Utils
+alias ll="ls -l -A"
+# Postgres
+alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:10.6"
+alias postgres_start="docker start postgres"
+# Git
+alias g="git"
+alias gst="git status"
+alias ga="git add"
+alias gc="git commit --verbose"
+alias gco="git checkout"
+alias gd="git diff"
+alias glog="git log --oneline --decorate --graph"
+alias gb="git branch"
+alias gf="git fetch"
+alias gp="git push"
+alias gs="git stash"
+# Bundle
+alias bi="bundle install --jobs=4"
+# Tmux
+alias tmuxa="tmux attach"
+alias tmuxl="tmux ls"
+alias tmuxn="tmux new"
