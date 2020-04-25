@@ -37,6 +37,24 @@ zinit light zsh-users/zsh-autosuggestions
 # Block adding completions to be run at the end by zinit
 zinit ice blockf; zinit light zsh-users/zsh-completions
 
+# Fuzzy Finder package (from Zsh-Packages/fzf)
+zinit pack"default+keys" for fzf
+
+# Tarball with the bin-gem-node annex-utilizing ice list
+zinit pack"bgn" for pyenv
+
+# Fasd
+zinit ice lucid as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
+  atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone"
+zinit light clvv/fasd
+
+fasd_cache="$HOME/.fasd"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+
 # Load the pure theme, with zsh-async library that's bundled with it.
 # zinit ice pick"async.zsh" src"pure.zsh"
 # zinit light sindresorhus/pure
@@ -81,11 +99,6 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.nodenv/bin:$PATH"
 eval "$(nodenv init -)"
 
-# Pyenv configuration
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 ## Jenv configuration
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
@@ -111,7 +124,9 @@ function dotfiles_unlink () {
 
 ## Aliases
 # Utils
+alias ls="ls -G"
 alias ll="ls -l -A"
+alias j='fasd_cd -i' # Change dir interactively
 # Postgres
 alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:10.6"
 alias postgres_start="docker start postgres"

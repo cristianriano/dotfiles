@@ -20,6 +20,10 @@ fi
 ## Keybindings
 if [[ -f "$DOTFILES_HOME/keybindings.zsh" ]]; then
   source "$DOTFILES_HOME/keybindings.zsh"
+
+  # Bind UP and DOWN arrow keys to C-r
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
 fi
 
 ## Theme powerlevel9k config

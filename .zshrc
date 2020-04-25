@@ -1,1 +1,1 @@
-./.zshrc-prezto
+./.zshrc-zinit
