@@ -29,35 +29,28 @@ zinit light-mode for \
     zinit-zsh/z-a-bin-gem-node
 
 ## Modules
-zinit light zdharma/history-search-multi-word
-
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
-zinit light zsh-users/zsh-autosuggestions
+zinit ice id-as="autosuggestions"; zinit light zsh-users/zsh-autosuggestions
 
-# Block adding completions to be run at the end by zinit
-zinit ice blockf; zinit light zsh-users/zsh-completions
+# Completions
+# ice block: avoid adding completions so they are run at the end by zinit
+zinit ice block id-as="zsh-completions"; zinit light zsh-users/zsh-completions
+zinit snippet PZT::modules/completion
 
 # Fuzzy Finder package (from Zsh-Packages/fzf)
-zinit pack"default+keys" for fzf
+zinit pack"default+keys" depth=1 for fzf
 
 # Tarball with the bin-gem-node annex-utilizing ice list
-zinit pack"bgn" for pyenv
+zinit pack"bgn" depth=1 for pyenv
 
 # Fasd
 zinit ice lucid as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
-  atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone"
+  atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone" depth=1 \
+  atload='eval "$(fasd --init auto)"'
 zinit light clvv/fasd
 
-fasd_cache="$HOME/.fasd"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-
-# Load the pure theme, with zsh-async library that's bundled with it.
-# zinit ice pick"async.zsh" src"pure.zsh"
-# zinit light sindresorhus/pure
+# History search
+zinit light zdharma/history-search-multi-word
 
 ## Theme
 zinit ice depth=1; zinit light Powerlevel9k/powerlevel9k
@@ -71,6 +64,7 @@ POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 # Syntax highlight must be the last one
+zinit ice id-as="fast-highlight" depth=1
 zinit light zdharma/fast-syntax-highlighting
 
 autoload -Uz compinit
@@ -82,7 +76,7 @@ zinit cdreplay -q
 ### End Load Zinit
 
 ## Global ENV
-declare -ga dotfiles=(.gemrc .vimrc .zpreztorc .zshrc .zprofile .tmux.conf)
+declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .tmux.conf)
 declare -g DOTFILES_HOME="$HOME/dotfiles"
 export SHELL='/bin/zsh'
 

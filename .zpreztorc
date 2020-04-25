@@ -32,7 +32,6 @@ zstyle ':prezto:*:*' color 'yes'
 zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
-  'completion' \
   'editor' \
   'history' \
   'directory' \
@@ -43,6 +42,7 @@ zstyle ':prezto:load' pmodule \
   'fasd' \
   'ruby' \
   'node' \
+  'completion' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
