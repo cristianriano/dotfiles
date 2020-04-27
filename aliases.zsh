@@ -29,7 +29,7 @@ alias tmuxn="tmux new"
 
 ### Functions
 # Dotfiles
-declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf)
+declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf p10k.zsh)
 
 function dotfiles_link () {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done

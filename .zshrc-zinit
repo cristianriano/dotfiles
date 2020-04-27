@@ -37,8 +37,12 @@ zinit ice id-as="autosuggestions"; zinit light zsh-users/zsh-autosuggestions
 zinit ice block id-as="zsh-completions"; zinit light zsh-users/zsh-completions
 zinit snippet PZT::modules/completion
 
+zinit wait lucid light-mode depth=1 for \
+  pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
+  pick="async.zsh" mafredri/zsh-async
+
 # Fuzzy Finder package (from Zsh-Packages/fzf)
-zinit pack"default+keys" depth=1 for fzf
+zinit pack multisrc="shell/*.zsh" depth=1 for fzf
 
 # Tarball with the bin-gem-node annex-utilizing ice list
 zinit pack"bgn" depth=1 for pyenv
@@ -53,15 +57,13 @@ zinit light clvv/fasd
 zinit light zdharma/history-search-multi-word
 
 ## Theme
-zinit ice depth=1; zinit light Powerlevel9k/powerlevel9k
-# Config
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator load command_execution_time time)
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.5 # Show execution time if > 0.5s
-# Truncate dir /usr/share/plasma -> /u/s/plasma
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+# Font
+zinit ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
+  atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
+zinit light ryanoasis/nerd-fonts
+
+zinit ice depth=1; zinit load romkatv/powerlevel10k
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Syntax highlight must be the last one
 zinit ice id-as="fast-highlight" depth=1
@@ -104,3 +106,6 @@ eval "$(jenv init -)"
 ## Java version
 export JAVA_OPTIONS="-Xmx2048m"
 export JAVA_OPTS="-Xmx2048m"
+
+
+export FZF_DEFAULT_OPTS="--no-mouse"
