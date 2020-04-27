@@ -4,6 +4,10 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+# cat with syntax highlight
+brew "bat"
+# Transfer URL
+brew "curl"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
 # Improved top (interactive process viewer)
@@ -14,8 +18,6 @@ brew "libpq", link: true
 brew "libssh2"
 # Open source relational database management system
 brew "mysql-client"
-# Python version management
-brew "pyenv"
 # Terminal multiplexer
 brew "tmux"
 # Code-search similar to ack
@@ -30,15 +32,13 @@ brew "wget"
 brew "yarn"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Additional completion definitions for zsh
-brew "zsh-completions"
+## Casks
 cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "alfred"
-cask "atom"
 cask "caffeine"
 cask "docker"
+cask "google-chrome"
 cask "iterm2"
-cask "java"
 cask "postman"
 cask "spotify"
 cask "tableplus"

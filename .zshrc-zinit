@@ -103,9 +103,5 @@ eval "$(nodenv init -)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-## Java version
-export JAVA_OPTIONS="-Xmx2048m"
-export JAVA_OPTS="-Xmx2048m"
 
-
-export FZF_DEFAULT_OPTS="--no-mouse"
+export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is binary || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -100' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down'"

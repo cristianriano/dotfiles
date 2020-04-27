@@ -25,6 +25,8 @@ alias bi="bundle install --jobs=4"
 alias tmuxa="tmux attach"
 alias tmuxl="tmux ls"
 alias tmuxn="tmux new"
+# Fzf
+alias fzfx="fzf | xargs"
 
 
 ### Functions
