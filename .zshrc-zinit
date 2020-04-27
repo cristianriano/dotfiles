@@ -44,9 +44,6 @@ zinit wait lucid light-mode depth=1 for \
 # Fuzzy Finder package (from Zsh-Packages/fzf)
 zinit pack multisrc="shell/*.zsh" depth=1 for fzf
 
-# Tarball with the bin-gem-node annex-utilizing ice list
-zinit pack"bgn" depth=1 for pyenv
-
 # Fasd
 zinit ice lucid as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
   atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone" depth=1 \
@@ -55,6 +52,30 @@ zinit light clvv/fasd
 
 # History search
 zinit light zdharma/history-search-multi-word
+
+# Version Managers
+# Tarball with the bin-gem-node annex-utilizing ice list
+zinit pack"bgn" depth=1 for pyenv
+
+zinit ice atclone"src/configure && make -C src && ./libexec/rbenv init - > zrbenv.zsh" \
+  atpull"%atclone" as"null" sbin"bin/rbenv" depth=1 id-as"rbenv" src"zrbenv.zsh"
+zinit light rbenv/rbenv
+
+zinit ice has"rbenv" as"null" id-as"ruby-build" cloneonly reset atpull"%atclone" \
+  atclone"mkdir -p $(rbenv root)/plugins/ruby-build; mv -f *(DN) $(rbenv root)/plugins/ruby-build/"
+zinit light rbenv/ruby-build
+
+zinit ice atclone"src/configure && make -C src && ./libexec/nodenv init - > znodenv.zsh" \
+  atpull"%atclone" as"null" sbin"bin/nodenv" depth=1 id-as"nodenv" src"znodenv.zsh"
+zinit light nodenv/nodenv
+
+zinit ice has"nodenv" as"null" id-as"nodenv-build" cloneonly reset atpull"%atclone" \
+  atclone"mkdir -p $(nodenv root)/plugins/node-build; mv -f *(DN) $(nodenv root)/plugins/node-build/"
+zinit light nodenv/node-build
+
+zinit ice atclone"./libexec/jenv init - > zjenv.zsh; mkdir -p $(jenv root)/versions" as"null" \
+  atpull"%atclone" sbin"bin/jenv" depth=1 id-as"jenv" src"zjenv.zsh"
+zinit light jenv/jenv
 
 ## Theme
 # Font
@@ -90,18 +111,6 @@ fi
 if [[ -f "$DOTFILES_HOME/aliases.zsh" ]]; then
   source "$DOTFILES_HOME/aliases.zsh"
 fi
-
-## Rbenv configuration
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-## Nodenv configuration
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
-
-## Jenv configuration
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 
 export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is binary || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -100' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down'"
