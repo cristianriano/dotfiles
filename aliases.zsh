@@ -31,7 +31,7 @@ alias fzfx="fzf | xargs"
 
 ### Functions
 # Dotfiles
-declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf p10k.zsh)
+declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh)
 
 function dotfiles_link () {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
