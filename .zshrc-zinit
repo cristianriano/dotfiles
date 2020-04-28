@@ -33,9 +33,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
 zinit ice id-as="autosuggestions"; zinit light zsh-users/zsh-autosuggestions
 
 # Completions
-# ice block: avoid adding completions so they are run at the end by zinit
-zinit ice block id-as="zsh-completions"; zinit light zsh-users/zsh-completions
-zinit snippet PZT::modules/completion
+zinit ice wait lucid blockf id-as="zsh-completions" atload"zicompinit; zicdreplay"
+zinit light zsh-users/zsh-completions
+zinit ice wait lucid; zinit snippet PZT::modules/completion
 
 zinit wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
@@ -45,7 +45,7 @@ zinit wait lucid light-mode depth=1 for \
 zinit pack multisrc="shell/*.zsh" depth=1 for fzf
 
 # Fasd
-zinit ice lucid as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
+zinit ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
   atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone" depth=1 \
   atload='eval "$(fasd --init auto)"'
 zinit light clvv/fasd
@@ -55,25 +55,25 @@ zinit light zdharma/history-search-multi-word
 
 # Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
-zinit pack"bgn" depth=1 for pyenv
+zinit wait"1" lucid pack"bgn" depth=1 for pyenv
 
-zinit ice atclone"src/configure && make -C src && ./libexec/rbenv init - > zrbenv.zsh" \
+zinit ice wait lucid atclone"src/configure && make -C src && ./libexec/rbenv init - > zrbenv.zsh" \
   atpull"%atclone" as"null" sbin"bin/rbenv" depth=1 id-as"rbenv" src"zrbenv.zsh"
 zinit light rbenv/rbenv
 
 zinit ice has"rbenv" as"null" id-as"ruby-build" cloneonly reset atpull"%atclone" \
-  atclone"mkdir -p $(rbenv root)/plugins/ruby-build; mv -f *(DN) $(rbenv root)/plugins/ruby-build/"
+  atclone"mkdir -p $(rbenv root)/plugins/ruby-build; mv -f *(DN) $(rbenv root)/plugins/ruby-build/ 2>/dev/null"
 zinit light rbenv/ruby-build
 
-zinit ice atclone"src/configure && make -C src && ./libexec/nodenv init - > znodenv.zsh" \
+zinit ice wait lucid atclone"src/configure && make -C src && ./libexec/nodenv init - > znodenv.zsh" \
   atpull"%atclone" as"null" sbin"bin/nodenv" depth=1 id-as"nodenv" src"znodenv.zsh"
 zinit light nodenv/nodenv
 
-zinit ice has"nodenv" as"null" id-as"nodenv-build" cloneonly reset atpull"%atclone" \
-  atclone"mkdir -p $(nodenv root)/plugins/node-build; mv -f *(DN) $(nodenv root)/plugins/node-build/"
+zinit ice has"nodenv" as"null" id-as"node-build" cloneonly reset atpull"%atclone" \
+  atclone"mkdir -p $(nodenv root)/plugins/node-build; mv -f *(DN) $(nodenv root)/plugins/node-build/ 2>/dev/null"
 zinit light nodenv/node-build
 
-zinit ice atclone"./libexec/jenv init - > zjenv.zsh; mkdir -p $(jenv root)/versions" as"null" \
+zinit ice wait"1" lucid atclone"./libexec/jenv init - > zjenv.zsh; mkdir -p $(jenv root)/versions" as"null" \
   atpull"%atclone" sbin"bin/jenv" depth=1 id-as"jenv" src"zjenv.zsh"
 zinit light jenv/jenv
 
@@ -91,10 +91,7 @@ zinit ice id-as="fast-highlight" depth=1
 zinit light zdharma/fast-syntax-highlighting
 
 autoload -Uz compinit
-compinit
 
-# Replay compdefs to be done after compinit
-zinit cdreplay -q
 # Man pages
 [[ -d $ZPFX/man ]] && export MANPATH="$ZPFX/man:$MANPATH"
 
