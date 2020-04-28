@@ -1,0 +1,7 @@
+[user]
+	name = Cristian Riano
+	email = cristian@platogo.com
+[core]
+	editor = vim
+[pager]
+	branch = false
