@@ -13,5 +13,5 @@ set cursorline " Highlight current line
 set autoindent
 set smartindent
 
-let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Different cursor while in insert and command mode
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Different cursor while in insert and command mode
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
