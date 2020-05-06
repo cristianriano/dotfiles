@@ -21,6 +21,7 @@ alias gp="git push"
 alias gs="git stash"
 # Bundle
 alias bi="bundle install --jobs=4"
+alias be="bundle exec"
 # Tmux
 alias tmuxa="tmux attach"
 alias tmuxl="tmux ls"
@@ -31,7 +32,7 @@ alias fzfx="fzf | xargs"
 
 ### Functions
 # Dotfiles
-declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh)
+declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc)
 
 function dotfiles_link () {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
