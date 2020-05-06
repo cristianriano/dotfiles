@@ -36,6 +36,7 @@ zinit ice id-as="autosuggestions"; zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid blockf id-as="zsh-completions" atload"zicompinit; zicdreplay"
 zinit light zsh-users/zsh-completions
 zinit ice wait lucid; zinit snippet PZT::modules/completion
+# zstyle ':completion:*' completer _complete _match _expand
 
 zinit wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
@@ -104,14 +105,13 @@ declare -g DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 export SHELL='/bin/zsh'
 
 ## Keybindings
-if [[ -f "$DOTFILES_HOME/keybindings.zsh" ]]; then
-  source "$DOTFILES_HOME/keybindings.zsh"
-fi
+[[ -f "$DOTFILES_HOME/keybindings.zsh" ]] && source "$DOTFILES_HOME/keybindings.zsh"
 
 ## Aliases and functions
-if [[ -f "$DOTFILES_HOME/aliases.zsh" ]]; then
-  source "$DOTFILES_HOME/aliases.zsh"
-fi
+[[ -f "$DOTFILES_HOME/aliases.zsh" ]] && source "$DOTFILES_HOME/aliases.zsh"
+
+## Binaries & Scripts
+[[ -d "$DOTFILES_HOME/bin" ]] && export PATH="$DOTFILES_HOME/bin:$PATH"
 
 
 export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is binary || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -100' --preview-window='right:hidden:wrap' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview'"
