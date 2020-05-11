@@ -10,6 +10,7 @@ brew "bat"
 brew "curl"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
+brew "go"
 # Improved top (interactive process viewer)
 brew "htop"
 # Postgres C API library
