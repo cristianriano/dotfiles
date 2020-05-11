@@ -1,6 +1,8 @@
 # Notation
 #
 # `C-`:   Means pressing down ctrl 
+# `M-`:   Alt/Option
+# `S-`:   Shift
 # `^[[A`: Arrow UP
 # `^[[B`: Arrow DOWN
 

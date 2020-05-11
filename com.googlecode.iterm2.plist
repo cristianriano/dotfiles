@@ -56382,6 +56382,8 @@
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.18431372549019609</real>
 				<key>Color Space</key>
@@ -56536,6 +56538,8 @@
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.086274509803921567</real>
 				<key>Color Space</key>
@@ -56992,7 +56996,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGSNerdFontComplete-Regular 12</string>
+			<string>MesloLGMNerdFontComplete-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -57067,21 +57071,25 @@
 	<array>
 		<string>3.3.9</string>
 	</array>
+	<key>NoSyncBFPFavorites</key>
+	<array>
+		<string>MesloLGM Nerd Font</string>
+	</array>
 	<key>NoSyncBFPRecents</key>
 	<array>
-		<string>Fira Mono for Powerline</string>
+		<string>MesloLGM Nerd Font</string>
 	</array>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{70, 730}</string>
+		<string>{291, 723}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>E543CDF2-2766-4035-A442-CDFD7600943A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>12</integer>
+	<integer>13</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -57850,7 +57858,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-27T14:04:23Z</date>
+	<date>2020-05-10T21:56:12Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
