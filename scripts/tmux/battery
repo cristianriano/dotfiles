@@ -1,0 +1,8 @@
+#!/bin/bash
+
+declare battery=`pmset -g batt | awk 'NR==2{print substr($3, 1, length($3) - 2)}'`
+
+if [[ $battery -gt 40 ]]; then echo "#[bg=colour28] ♥ $battery"
+elif [[ $battery -gt 15 ]]; then echo "#[bg=colour178,fg=black] ♥ $battery"
+else echo "#[bg=colour160] ♥ $battery"
+fi
