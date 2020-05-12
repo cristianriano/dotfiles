@@ -36,8 +36,9 @@ zinit ice id-as="autosuggestions"; zinit light zsh-users/zsh-autosuggestions
 # Completions
 zinit ice wait lucid blockf id-as="zsh-completions" atload"zicompinit; zicdreplay"
 zinit light zsh-users/zsh-completions
-zinit ice wait lucid; zinit snippet PZT::modules/completion
-# zstyle ':completion:*' completer _complete _match _expand
+
+zinit snippet PZT::modules/completion
+zstyle ':completion:*' completer _complete _match _expand
 
 zinit wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
