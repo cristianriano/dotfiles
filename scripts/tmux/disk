@@ -1,0 +1,3 @@
+#!/bin/bash
+
+df -g | awk 'NR==2{ print $4Gb "G free of " $2"G"  }'
