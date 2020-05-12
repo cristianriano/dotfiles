@@ -6,6 +6,7 @@ setopt beep
 setopt inc_append_history
 setopt share_history
 autoload colors && colors
+setopt interactivecomments # Comments on commands
 
 ### Load Zinit
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
