@@ -6,10 +6,13 @@ tap "homebrew/core"
 tap "homebrew/services"
 # cat with syntax highlight
 brew "bat"
+brew "cmake"
 # Transfer URL
 brew "curl"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
+# Internationalitation and localization
+brew "gettext"
 brew "go"
 # Improved top (interactive process viewer)
 brew "htop"
@@ -17,8 +20,11 @@ brew "htop"
 brew "libpq", link: true
 # C library implementing the SSH2 protocol
 brew "libssh2"
+brew "lua"
+brew "macvim"
 # Open source relational database management system
 brew "mysql-client"
+brew "python@3.8"
 # Terminal multiplexer
 brew "tmux"
 # Code-search similar to ack

@@ -19,8 +19,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-sensible'
 
 Plug 'elixir-editors/vim-elixir'
-"Plug 'valloric/youcompleteme'
-Plug 'airblade/vim-gitgutter'
+Plug 'valloric/youcompleteme'
+Plug 'mhinz/vim-signify'
 
 call plug#end()
 

@@ -58,7 +58,7 @@ zinit light zdharma/history-search-multi-word
 
 # Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
-zinit wait"1" lucid pack"bgn" depth=1 for pyenv
+# zinit wait"1" lucid pack"bgn" depth=1 for pyenv
 
 zinit ice wait lucid atclone"src/configure && make -C src && ./libexec/rbenv init - > zrbenv.zsh" \
   atpull"%atclone" as"null" sbin"bin/rbenv" depth=1 id-as"rbenv" src"zrbenv.zsh"
@@ -113,7 +113,7 @@ export SHELL='/bin/zsh'
 [[ -f "$DOTFILES_HOME/aliases.zsh" ]] && source "$DOTFILES_HOME/aliases.zsh"
 
 ## Binaries & Scripts
-[[ -d "$DOTFILES_HOME/bin" ]] && export PATH="$DOTFILES_HOME/bin:$PATH"
+# [[ -d "$DOTFILES_HOME/bin" ]] && export PATH="$DOTFILES_HOME/bin:$PATH"
 
 
 export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is binary || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -100' --preview-window='right:hidden:wrap' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview'"
