@@ -19,8 +19,16 @@ Plug 'junegunn/seoul256.vim'
 Plug 'tpope/vim-sensible'
 
 Plug 'elixir-editors/vim-elixir'
-Plug 'valloric/youcompleteme'
 Plug 'mhinz/vim-signify'
+Plug 'valloric/youcompleteme', {
+  \ 'do': 'cd ~/.vim/plugged/youcompleteme && python3 install.py --all'
+  \ }
+
+Plug 'preservim/nerdtree'
+Plug 'wincent/command-t', {
+  \ 'do': 'cd ruby/command-t/ext/command-t &&
+  \ /usr/local/opt/ruby/bin/ruby extconf.rb && make'
+  \ }
 
 call plug#end()
 
@@ -28,9 +36,22 @@ call plug#end()
 """""""" Basic Settings """"""""
 """""""""""""""""""""""""""""""""
 
+set showcmd
 set number " Show line numbers
 set hls " Highlight search
 set ic " Ignore case
+set incsearch " Start searching as typing
+set hidden " Hide buffers when opening another file
+set hlsearch " Higlight all matches
+
+set textwidth=0
+set colorcolumn=80
+
+""" Mouse
+silent! set ttymouse=xterm2
+set mouse=a
+
+set clipboard=unnamedplus " Share clipboard with OS
 
 """ Tabs
 set expandtab " tab to spaces
@@ -40,6 +61,9 @@ set softtabstop=2
 
 set cursorline " Highlight current line
 
+set autoindent
+set smartindent
+
 "" Invisible chars
 set list
 
@@ -47,3 +71,11 @@ colo seoul256
 
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Different cursor while in insert and command mode
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+let NERDTreeShowHidden=1
+
+" Keybindings
+let mapleader=','
+
+noremap <leader>t :NERDTreeToggle <CR>
+noremap <leader>p :CommandT <CR>
