@@ -20,9 +20,11 @@ Plug 'tpope/vim-sensible'
 
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-signify'
+
 Plug 'valloric/youcompleteme', {
   \ 'do': 'cd ~/.vim/plugged/youcompleteme && python3 install.py --all'
   \ }
+Plug 'slashmili/alchemist.vim'
 
 Plug 'preservim/nerdtree'
 Plug 'wincent/command-t', {
@@ -51,7 +53,7 @@ set colorcolumn=80
 silent! set ttymouse=xterm2
 set mouse=a
 
-set clipboard=unnamedplus " Share clipboard with OS
+set clipboard=unnamed " Share clipboard with OS
 
 """ Tabs
 set expandtab " tab to spaces
@@ -75,7 +77,13 @@ let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 let NERDTreeShowHidden=1
 
 " Keybindings
-let mapleader=','
+let mapleader='`'
 
 noremap <leader>t :NERDTreeToggle <CR>
+noremap <leader>f :NERDTreeFind <CR>
 noremap <leader>p :CommandT <CR>
+
+noremap <leader>n :tabnew <CR>
+noremap <leader>w :tabclose <CR>
+noremap <leader>[ :tabprevious <CR>
+noremap <leader>] :tabnext <CR>
