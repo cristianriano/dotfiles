@@ -69,14 +69,22 @@ set smartindent
 "" Invisible chars
 set list
 
+"" Vim tabs
+set switchbuf=useopen,usetab
+" Autosave
+set autowriteall
+au TabLeave * :wa
+
 colo seoul256
 
-let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Different cursor while in insert and command mode
-let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Different cursor while in insert and command mode
+let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 let NERDTreeShowHidden=1
 
-" Keybindings
+let g:CommandTAcceptSelectionCommand='CommandTOpen tabe'
+
+"" Keybindings
 let mapleader='`'
 
 noremap <leader>t :NERDTreeToggle <CR>
