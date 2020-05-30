@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Delete containers that exited with errors
+docker ps -a | grep "Exited ([^0]" | awk '{ print $1  }' | xargs docker rm
+# Delete intermediate images
+docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi
