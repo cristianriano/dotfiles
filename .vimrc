@@ -27,6 +27,7 @@ Plug 'valloric/youcompleteme', {
 Plug 'slashmili/alchemist.vim'
 
 Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'wincent/command-t', {
   \ 'do': 'cd ruby/command-t/ext/command-t &&
   \ /usr/local/opt/ruby/bin/ruby extconf.rb && make'
@@ -95,3 +96,5 @@ noremap <leader>n :tabnew <CR>
 noremap <leader>w :tabclose <CR>
 noremap <leader>[ :tabprevious <CR>
 noremap <leader>] :tabnext <CR>
+
+noremap <leader>o :FZF <CR>

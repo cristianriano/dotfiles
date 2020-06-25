@@ -25,6 +25,7 @@ brew "macvim"
 # Open source relational database management system
 brew "mysql-client"
 brew "python@3.8"
+brew "telnet"
 # Terminal multiplexer
 brew "tmux"
 # Code-search similar to ack

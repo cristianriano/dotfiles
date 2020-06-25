@@ -8,6 +8,10 @@ setopt share_history
 autoload colors && colors
 setopt interactivecomments # Comments on commands
 
+## Global ENV
+declare -g DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
+export SHELL='/bin/zsh'
+
 ## Binaries & Scripts
 [[ -d "$DOTFILES_HOME/bin" ]] && export PATH="$DOTFILES_HOME/bin:$PATH"
 
@@ -104,10 +108,6 @@ autoload -Uz compinit
 [[ -d $ZPFX/man ]] && export MANPATH="$ZPFX/man:$MANPATH"
 
 ### End Load Zinit
-
-## Global ENV
-declare -g DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-export SHELL='/bin/zsh'
 
 ## Keybindings
 [[ -f "$DOTFILES_HOME/keybindings.zsh" ]] && source "$DOTFILES_HOME/keybindings.zsh"

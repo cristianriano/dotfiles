@@ -1,7 +1,10 @@
 [user]
 	name = Cristian Riano
-	email = cristian@platogo.com
+	email = cristiancarm11@gmail.com
 [core]
 	editor = vim
+	excludesfile = /Users/cristian/.gitignore
 [pager]
 	branch = false
+[commit]
+	template = ~/.gitmessage
