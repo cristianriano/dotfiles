@@ -60,32 +60,16 @@ zinit ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
   atload='eval "$(fasd --init auto)"'
 zinit light clvv/fasd
 
-# History search
+## History search
 zinit light zdharma/history-search-multi-word
 
-# Version Managers
+## Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
 # zinit wait"1" lucid pack"bgn" depth=1 for pyenv
+# lucid: Removes `loaded` message for async
 
-zinit ice wait lucid atclone"src/configure && make -C src && ./libexec/rbenv init - > zrbenv.zsh" \
-  atpull"%atclone" as"null" sbin"bin/rbenv" depth=1 id-as"rbenv" src"zrbenv.zsh"
-zinit light rbenv/rbenv
-
-zinit ice has"rbenv" as"null" id-as"ruby-build" cloneonly reset atpull"%atclone" \
-  atclone"mkdir -p $(rbenv root)/plugins/ruby-build; mv -f *(DN) $(rbenv root)/plugins/ruby-build/ 2>/dev/null"
-zinit light rbenv/ruby-build
-
-zinit ice wait lucid atclone"src/configure && make -C src && ./libexec/nodenv init - > znodenv.zsh" \
-  atpull"%atclone" as"null" sbin"bin/nodenv" depth=1 id-as"nodenv" src"znodenv.zsh"
-zinit light nodenv/nodenv
-
-zinit ice has"nodenv" as"null" id-as"node-build" cloneonly reset atpull"%atclone" \
-  atclone"mkdir -p $(nodenv root)/plugins/node-build; mv -f *(DN) $(nodenv root)/plugins/node-build/ 2>/dev/null"
-zinit light nodenv/node-build
-
-zinit ice wait"1" lucid atclone"./libexec/jenv init - > zjenv.zsh; mkdir -p $(jenv root)/versions" as"null" \
-  atpull"%atclone" sbin"bin/jenv" depth=1 id-as"jenv" src"zjenv.zsh"
-zinit light jenv/jenv
+zinit ice wait lucid depth=1 id-as"asdf" pick"asdf.sh" fpath"completions"
+zinit light asdf-vm/asdf
 
 ## Theme
 # Font
