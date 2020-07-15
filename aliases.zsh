@@ -3,6 +3,8 @@
 alias ls="ls -G"
 alias ll="ls -l -A"
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias rm="rm -i"
 alias j='fasd_cd -i' # Change dir interactively
 # Postgres
