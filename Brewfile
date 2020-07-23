@@ -1,12 +1,17 @@
-tap "adoptopenjdk/openjdk"
+# tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+
+# GNU Standards-compliant Makefiles
+brew "autoconf"
+brew "automake"
 # cat with syntax highlight
 brew "bat"
 brew "cmake"
+brew "coreutils"
 # Transfer URL
 brew "curl"
 # Cryptography and SSL/TLS Toolkit
@@ -21,10 +26,12 @@ brew "libpq", link: true
 # C library implementing the SSH2 protocol
 brew "libssh2"
 brew "lua"
+brew "libyaml"
 brew "macvim"
 # Open source relational database management system
 brew "mysql-client"
 brew "python@3.8"
+brew "readline"
 brew "telnet"
 # Terminal multiplexer
 brew "tmux"
@@ -41,7 +48,6 @@ brew "yarn"
 # UNIX shell (command interpreter)
 brew "zsh"
 ## Casks
-cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "alfred"
 cask "caffeine"
 cask "docker"
