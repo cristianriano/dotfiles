@@ -35,6 +35,7 @@ brew "readline"
 brew "telnet"
 # Terminal multiplexer
 brew "tmux"
+brew "tmux-mem-cpu-load"
 # Code-search similar to ack
 brew "the_silver_searcher"
 # Display directories as trees (with optional color/HTML output)
@@ -54,6 +55,7 @@ cask "docker"
 cask "google-chrome"
 cask "iterm2"
 cask "postman"
+cask "smcfancontrol"
 cask "spotify"
 cask "tableplus"
 cask "visual-studio-code"

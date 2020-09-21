@@ -1,3 +1,0 @@
-#!/bin/sh
-
-top -l 1 -s 0 | awk 'NR==4{print $3}'
