@@ -4,7 +4,10 @@
 [core]
 	editor = vim
 	excludesfile = /Users/cristian/.gitignore
+	attributesfile = /Users/cristian/.gitattributes
 [pager]
 	branch = false
 [commit]
 	template = ~/.gitmessage
+[diff "rspec"]
+	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario|background)[ \t].*)$"
