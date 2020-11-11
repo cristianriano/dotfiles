@@ -25,6 +25,8 @@ alias gs="git stash"
 # Bundle
 alias bi="bundle install --jobs=4"
 alias be="bundle exec"
+# Rails
+alias rg="bundle exec rails generate"
 # Tmux
 alias tmuxa="tmux attach"
 alias tmuxl="tmux ls"
