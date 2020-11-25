@@ -6,3 +6,6 @@
 # vi
 *~
 .elixir_ls
+
+# Config
+.env.*
