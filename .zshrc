@@ -10,7 +10,7 @@ setopt interactivecomments # Comments on commands
 
 ## Global ENV
 declare -g DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-export SHELL='/bin/zsh'
+export SHELL='/usr/local/bin/zsh'
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 ## Binaries & Scripts
