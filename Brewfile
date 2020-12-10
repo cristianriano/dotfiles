@@ -1,4 +1,5 @@
 # tap "adoptopenjdk/openjdk"
+tap "dbcli/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
@@ -30,6 +31,8 @@ brew "libyaml"
 brew "macvim"
 # Open source relational database management system
 brew "mysql-client"
+# Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
+brew "pgcli"
 brew "python@3.8"
 brew "readline"
 brew "telnet"
