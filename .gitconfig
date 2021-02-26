@@ -11,3 +11,5 @@
 	template = ~/.gitmessage
 [diff "rspec"]
 	xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario|background)[ \t].*)$"
+[gpg]
+	program = gpg

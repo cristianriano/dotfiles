@@ -104,3 +104,6 @@ autoload -Uz compinit
 export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is binary || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -100' --preview-window='right:hidden:wrap' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview'"
 
 export DISABLE_SPRING=true
+
+## Reshim
+# asdf reshim yarn|nodejs|ruby|golang
