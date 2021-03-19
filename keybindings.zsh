@@ -15,3 +15,7 @@ bindkey '^[e' end-of-line
 # Use C-a and C-e as by default in many consoles
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
+
+# history-substring-search to use UP and DOWN
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down

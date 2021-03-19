@@ -62,7 +62,9 @@ zinit ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
 zinit light clvv/fasd
 
 ## History search
+# ctrl-r
 zinit light zdharma/history-search-multi-word
+zinit light zsh-users/zsh-history-substring-search
 
 ## Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
