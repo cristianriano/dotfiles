@@ -3,8 +3,8 @@
 	email = cristiancarm11@gmail.com
 [core]
 	editor = vim
-	excludesfile = /Users/cristian/.gitignore
-	attributesfile = /Users/cristian/.gitattributes
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
 [pager]
 	branch = false
 [commit]

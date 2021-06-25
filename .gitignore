@@ -9,3 +9,6 @@
 
 # Config
 .env.*
+
+# Ruby
+.bundle
