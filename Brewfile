@@ -19,20 +19,23 @@ brew "curl"
 brew "openssl@1.1"
 # Internationalitation and localization
 brew "gettext"
-brew "go"
+# curl for gRPC servers
+brew "grpcurl"
 # Improved top (interactive process viewer)
 brew "htop"
 # Postgres C API library
 brew "libpq", link: true
 # C library implementing the SSH2 protocol
 brew "libssh2"
-brew "lua"
 brew "libyaml"
+brew "lua"
 brew "macvim"
 # Open source relational database management system
 brew "mysql-client"
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
 brew "pgcli"
+# Compile .proto files
+brew "protobuf"
 brew "python@3.8"
 brew "readline"
 brew "telnet"

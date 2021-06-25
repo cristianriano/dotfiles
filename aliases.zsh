@@ -5,11 +5,12 @@ alias ll="ls -l -A"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias rm="rm -i"
+#alias rm="rm -i"
 alias j='fasd_cd -i' # Change dir interactively
-# Postgres
+# Docker
 alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:10.6"
 alias postgres_start="docker start postgres"
+alias dockredis="docker run -d --rm --name redis -p 6379:6379 redis:latest"
 # Git
 alias g="git"
 alias gst="git status"
