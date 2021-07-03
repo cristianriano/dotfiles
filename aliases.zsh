@@ -8,9 +8,10 @@ alias ....="cd ../../.."
 #alias rm="rm -i"
 alias j='fasd_cd -i' # Change dir interactively
 # Docker
-alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password postgres:10.6"
+alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6"
 alias postgres_start="docker start postgres"
-alias dockredis="docker run -d --rm --name redis -p 6379:6379 redis:latest"
+alias dockredis="docker run -d --rm --name redis -p 6379:6379 -v "/Users/$(whoami)/code/volumes/redis:/data" redis:latest"
+alias dockpostgres11="docker run -d --rm --name postgres11 -p 5432:5432 -v "/Users/$(whoami)/code/data11:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11"
 # Git
 alias g="git"
 alias gst="git status"
@@ -34,7 +35,6 @@ alias tmuxl="tmux ls"
 alias tmuxn="tmux new"
 # Fzf
 alias fzfx="fzf | xargs"
-
 
 ### Functions
 # Dotfiles
