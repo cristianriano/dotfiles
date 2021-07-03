@@ -7,6 +7,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 #alias rm="rm -i"
 alias j='fasd_cd -i' # Change dir interactively
+alias cat="bat"
+alias e="emacs -nw"
 # Docker
 alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6"
 alias postgres_start="docker start postgres"
@@ -38,7 +40,7 @@ alias fzfx="fzf | xargs"
 
 ### Functions
 # Dotfiles
-declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage)
+declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs)
 
 function dotfiles_link () {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
