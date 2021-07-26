@@ -22,6 +22,14 @@ It contains:
 5. Set `zsh` as the default shell `chsh -s /bin/zsh`
 6. Open a new terminal, it should download `zinit` and install the packages (you might have to do it multiple times)
 
+## Mac Configurations
+
+### Keyboard
+
+_Change between Desktops_
+Keyboard settings > Shortcuts > Mission Control
+Move left a space Ctrl-Cmd-Left
+
 ## Cheatsheet
 
 ### ASDF
