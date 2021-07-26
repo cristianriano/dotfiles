@@ -6,6 +6,8 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
+# Spell checker
+brew "aspell"
 # GNU Standards-compliant Makefiles
 brew "autoconf"
 brew "automake"

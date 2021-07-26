@@ -12,3 +12,6 @@
 
 # Ruby
 .bundle
+
+# Emacs
+.projectile

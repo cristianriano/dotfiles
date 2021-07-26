@@ -15,3 +15,5 @@
 	program = gpg
 [push]
 	default = current
+[init]
+	defaultBranch = master
