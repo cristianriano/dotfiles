@@ -32,7 +32,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(yaml
+   '(html
+     yaml
      elixir
      ruby
      ;; ----------------------------------------------------------------
@@ -60,7 +61,8 @@ This function should only modify configuration layer settings."
      (version-control :variables
                       version-control-diff-tool 'diff-hl
                       version-control-global-margin t)
-     treemacs)
+     (treemacs :variables
+               treemacs-use-git-mode 'deferred))
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -551,7 +553,15 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (spacemacs/toggle-truncate-lines-on)
-  (setq create-lockfiles nil)
+  (setq
+   create-lockfiles nil
+   vc-follow-symlinks t)
+
+  (unless window-system
+    (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+    (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
+
+  (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 )
 
 
