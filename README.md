@@ -28,7 +28,8 @@ It contains:
 
 _Change between Desktops_
 Keyboard settings > Shortcuts > Mission Control
-Move left a space Ctrl-Cmd-Left
+1. Move left a space -> Ctrl-Cmd-Left
+2. Disable Ctrl-Up and Ctrl-Down
 
 ## Cheatsheet
 
