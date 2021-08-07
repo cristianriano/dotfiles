@@ -21,6 +21,8 @@ brew "curl"
 brew "openssl@1.1"
 # Internationalitation and localization
 brew "gettext"
+# Privacy package (tools for signing, verifying, etc)
+brew "gnupg"
 # curl for gRPC servers
 brew "grpcurl"
 # Improved top (interactive process viewer)
@@ -55,7 +57,7 @@ brew "watch"
 # Internet file retriever
 brew "wget"
 # JavaScript package manager
-brew "yarn"
+# brew "yarn" # Use asdf
 # UNIX shell (command interpreter)
 brew "zsh"
 ## Casks
@@ -66,6 +68,7 @@ cask "emacs"
 cask "google-chrome"
 cask "iterm2"
 cask "postman"
+cask "scroll-reverser"
 cask "smcfancontrol"
 cask "spotify"
 cask "tableplus"
