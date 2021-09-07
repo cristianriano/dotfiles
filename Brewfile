@@ -21,6 +21,8 @@ brew "curl"
 brew "openssl@1.1"
 # Internationalitation and localization
 brew "gettext"
+# Needed for some zinit packages
+brew "go"
 # Privacy package (tools for signing, verifying, etc)
 brew "gnupg"
 # curl for gRPC servers
@@ -62,10 +64,11 @@ brew "wget"
 brew "zsh"
 ## Casks
 cask "alfred"
+cask "brave-browser"
 cask "caffeine"
 cask "docker"
 cask "emacs"
-cask "google-chrome"
+#cask "google-chrome"
 cask "iterm2"
 cask "postman"
 cask "scroll-reverser"

@@ -40,6 +40,7 @@ alias fzfx="fzf | xargs"
 
 ### Functions
 # Dotfiles
+DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config)
 
 function dotfiles_link () {

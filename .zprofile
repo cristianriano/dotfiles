@@ -2,7 +2,7 @@
 # Executes commands at login pre-zshrc.
 #
 # Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Cristian Riaño <cristiancarm11@gmail.com>
 #
 
 #

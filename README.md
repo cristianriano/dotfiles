@@ -15,12 +15,13 @@ It contains:
 
 ## Installation
 
-1. Install [Brew](https://brew.sh/)
+1. Install [Brew](https://brew.sh/) (This will also install dev tools if missing e.g `git`)
 2. Clone the repo `git clone https://github.com/cristianriano/dotfiles.git ~/dotfiles`
 3. Run `aliases.zsh` and then the function `dotfiles_link` on the shell
 4. Run `brew bundle` inside the repo
 5. Set `zsh` as the default shell `chsh -s /bin/zsh`
 6. Open a new terminal, it should download `zinit` and install the packages (you might have to do it multiple times)
+7. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 409`
 
 ## Mac Configurations
 
@@ -30,6 +31,23 @@ _Change between Desktops_
 Keyboard settings > Shortcuts > Mission Control
 1. Move left a space -> Ctrl-Cmd-Left
 2. Disable Ctrl-Up and Ctrl-Down
+
+__Key repetition__
+Keyboard settings > Keyboard
+1. Key repeat -> Fast
+2. Delay Until repeat -> Short
+
+### Mouse
+
+_Scroll Reverser_
+Install it from [here](https://pilotmoon.com/scrollreverser/)
+
+### Visual Studio
+
+1. Install settings Sync
+2. Login using Github and choose the gist
+3. Enable auto download
+4. Trigger "Download Settings"
 
 ## Cheatsheet
 
