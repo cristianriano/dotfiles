@@ -36,6 +36,8 @@ brew "libssh2"
 brew "libyaml"
 brew "lua"
 brew "macvim"
+# MySql client on steroids (https://www.mycli.net/)
+brew "mycli"
 # Open source relational database management system
 brew "mysql-client"
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)

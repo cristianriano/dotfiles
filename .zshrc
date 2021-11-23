@@ -109,3 +109,7 @@ export DISABLE_SPRING=true
 
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 
+# Set JAVA_HOME
+if asdf current java &> /dev/null; then
+  source "$HOME/.asdf/plugins/java/set-java-home.zsh"
+fi
