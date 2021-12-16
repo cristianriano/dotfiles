@@ -26,6 +26,7 @@ alias gb="git branch"
 alias gf="git fetch"
 alias gp="git push"
 alias gs="git stash"
+alias gsw="git switch"
 # Bundle
 alias bi="bundle install --jobs=4"
 alias be="bundle exec"

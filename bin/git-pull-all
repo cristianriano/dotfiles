@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Iterates over all local branches and performs a pull with default
+
+git for-each-ref refs/heads/ "--format=%(refname:short)" |
+    while read branch; do
+      git switch $branch
+    done

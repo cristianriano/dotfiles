@@ -1,4 +1,5 @@
 .vscode/
+.dccache
 
 # Mac
 .DS_Store
