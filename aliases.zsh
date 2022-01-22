@@ -14,6 +14,7 @@ alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(w
 alias postgres_start="docker start postgres"
 alias dockredis="docker run -d --rm --name redis -p 6379:6379 -v "/Users/$(whoami)/code/volumes/redis:/data" redis:latest"
 alias dockpostgres11="docker run -d --rm --name postgres11 -p 5432:5432 -v "/Users/$(whoami)/code/data11:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11"
+alias dockmysql57="docker run -d --rm -it --name mysql57 -p 3307:3306 -v "/Users/$(whoami)/code/volumes/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD=password mysql:5.7"
 # Git
 alias g="git"
 alias gst="git status"
