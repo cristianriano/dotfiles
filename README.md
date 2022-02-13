@@ -51,6 +51,12 @@ Install it from [here](https://pilotmoon.com/scrollreverser/)
 
 ## Cheatsheet
 
+### Vim
+
+There is a minimalistic Vim setup using [vim-plug](https://github.com/junegunn/vim-plug).
+
+To install new plugins add it to the `.vimrc` file and run `:PlugInstall` inside vim
+
 ### ASDF
 - List all available versions\
 `asdf list`

@@ -33,6 +33,8 @@ Plug 'wincent/command-t', {
   \ /usr/local/opt/ruby/bin/ruby extconf.rb && make'
   \ }
 
+Plug 'mechatroner/rainbow_csv'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""
