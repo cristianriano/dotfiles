@@ -113,3 +113,10 @@ export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 if asdf current java &> /dev/null; then
   source "$HOME/.asdf/plugins/java/set-java-home.zsh"
 fi
+
+# Hook direnv into zsh
+# &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
+if command -v direnv &> /dev/null; then
+  eval "$(asdf exec direnv hook zsh)"
+  direnv() { asdf exec direnv "$@"; }
+fi

@@ -58,3 +58,12 @@ function dotfiles_unlink () {
   done
 }
 
+# Config folder
+function config_link() {
+  for f in $(ls -1 $DOTFILES_HOME/.config); do
+    # If file exists regarding of the type (check man test for more options)
+    if [[ ! -e $HOME/.config/$f ]]; then
+      ln -f -s $DOTFILES_HOME/.config/$f $HOME/.config/$f
+    fi
+  done
+}

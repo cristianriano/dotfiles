@@ -70,6 +70,16 @@ To install new plugins add it to the `.vimrc` file and run `:PlugInstall` inside
 - Reshim
 `asdf reshim ruby`
 
+#### Direnv
+
+Direnv loads env variables when navigating to a folder with `.envrc`
+
+There is also a [plugin](https://github.com/asdf-community/asdf-direnv) with `asdf` to avoid the roundtrip to the shims. To enable it in a parent folder\
+`echo 'use asdf' > .envrc`
+
+And then allow the execution by running\
+`direnv allow`
+
 ### Go
 - Install package from source\
 `go get github.com/mikefarah/yq/v4`
