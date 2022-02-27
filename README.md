@@ -20,8 +20,39 @@ It contains:
 3. Run `aliases.zsh` and then the function `dotfiles_link` on the shell
 4. Run `brew bundle` inside the repo
 5. Set `zsh` as the default shell `chsh -s /bin/zsh`
-6. Open a new terminal, it should download `zinit` and install the packages (you might have to do it multiple times)
+6. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
 7. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 409`
+
+## Zhell
+
+This configuration uses [ZI](https://github.com/z-shell/zi) for loading plugins, and leverages the Turbo mode to
+increass loading speed (currently ~600ms, run `timezsh` for a report of running 10 times).
+
+To check the time to load each package\
+`zi time`
+
+To update and compile it run\
+`zi self-update`
+
+### Packages list
+
+- [Autosuggestions Fish style](https://github.com/zsh-users/zsh-autosuggestions)
+- [Additional completions for zsh](https://github.com/zsh-users/zsh-completions)
+- [Prezto completions](https://github.com/sorin-ionescu/prezto/tree/master/modules/completion)
+- [Auto pair/delete delimiters](https://github.com/hlissner/zsh-autopair)
+- [FZF - Command line Fuzzy Finder](https://github.com/junegunn/fzf)
+- [Fasd](https://github.com/clvv/fasd)
+- [ASDF - Version Manager](https://github.com/asdf-vm/asdf)
+- [History search multi world](https://github.com/z-shell/history-search-multi-word)
+- [History substring search](https://github.com/zsh-users/zsh-history-substring-search)
+- [Fast Highlighting](https://github.com/z-shell/fast-syntax-highlighting)
+- [Power 10K theme](https://github.com/romkatv/powerlevel10k)
+
+## TODO
+
+- Docker completion
+- Fancy diff
+- Don't add twice `dotfiles/bin` to `PATH` when opening tmux
 
 ## Mac Configurations
 

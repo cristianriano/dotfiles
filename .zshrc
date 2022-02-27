@@ -9,92 +9,94 @@ autoload colors && colors
 setopt interactivecomments # Comments on commands
 
 ## Global ENV
-declare -g DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
+export DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 export SHELL='/usr/local/bin/zsh'
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 ## Binaries & Scripts
 [[ -d "$DOTFILES_HOME/bin" ]] && export PATH="$DOTFILES_HOME/bin:$PATH"
 
-### Load Zinit
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+### Load ZI (https://github.com/z-shell/zi)
+export ZI_HOME="${HOME}/.zi"
+if [[ ! -f "$ZI_HOME/bin/zi.zsh" ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}Z-SHELL%F{220} A Swiss Army Knife for Zsh (%F{33}z-shell/zi%F{220})…%f"
+    command mkdir -p "$ZI_HOME" && command chmod g-rwX "$ZI_HOME"
+    command git clone https://github.com/z-shell/zi.git "$ZI_HOME/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+source "$ZI_HOME/bin/zi.zsh"
+autoload -Uz _zi
+(( ${+_comps} )) && _comps[zi]=_zi
 
-# patch-dl: Download and apply patches. ice: `dl` `patch`
-# as-monitor: Auto-download of last version. ice: `as"monitor"`
-# bin-gem-node: Executable not on PATH. `fbin` ice
-zinit light-mode for \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-bin-gem-node
+# Annexes (extensions) for ZI. Adds ice modifiers:
+#   - patch-dl: Download and apply patches. ice: `dl` `patch`
+#   - bin-gem-node: Executable not on PATH. `fbin` ice
+zi light-mode for \
+    z-shell/z-a-patch-dl \
+    z-shell/z-a-bin-gem-node
 
 ## Modules
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
-zinit ice id-as="autosuggestions"; zinit light zsh-users/zsh-autosuggestions
+zi ice id-as="autosuggestions"; zi light zsh-users/zsh-autosuggestions
 
 # Completions
-zinit ice wait lucid blockf id-as="zsh-completions" atload"zicompinit; zicdreplay"
-zinit light zsh-users/zsh-completions
+zi ice wait lucid blockf id-as="zsh-completions" atload"zicompinit; zicdreplay"
+zi light zsh-users/zsh-completions
 
-zinit snippet PZT::modules/completion
+zi snippet PZT::modules/completion
 zstyle ':completion:*' completer _complete _match _expand
 
-zinit wait lucid light-mode depth=1 for \
+zi wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
   pick="async.zsh" mafredri/zsh-async
 
 # Fuzzy Finder package (from Zsh-Packages/fzf)
-zinit pack multisrc="shell/*.zsh" depth=1 for fzf
+zi pack multisrc="shell/*.zsh" depth=1 for fzf
 
 # Fasd
-zinit ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
+zi ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
   atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone" depth=1 \
   atload='eval "$(fasd --init auto)"'
-zinit light clvv/fasd
+zi light clvv/fasd
 
 ## History search
 # ctrl-r
-zinit light zdharma/history-search-multi-word
-zinit light zsh-users/zsh-history-substring-search
+zi light-mode for \
+  z-shell/history-search-multi-word \
+  zsh-users/zsh-history-substring-search
 
 ## Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
-# zinit wait"1" lucid pack"bgn" depth=1 for pyenv
+# zi wait"1" lucid pack"bgn" depth=1 for pyenv
 # lucid: Removes `loaded` message for async
 
-zinit ice wait lucid depth=1 id-as"asdf" pick"asdf.sh" fpath"completions"
-zinit light asdf-vm/asdf
+# atload="!PATH+=:~/share"
+zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" fpath="completions" atload="!export FOO=bar"
+zi light asdf-vm/asdf
 
 ## Theme
 # Font
-zinit ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
+zi ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
   atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
-zinit light ryanoasis/nerd-fonts
+zi light ryanoasis/nerd-fonts
 
-zinit ice depth=1; zinit load romkatv/powerlevel10k
+zi ice depth=1; zi load romkatv/powerlevel10k
 if [[ ($(ps -p $PPID) =~ 'Visual Studio') && (-f ~/.p10k-lean.zsh) ]] then; source ~/.p10k-lean.zsh
 elif [[ -f ~/.p10k.zsh ]] then; source ~/.p10k.zsh
 fi
 
 # Syntax highlight must be the last one
-zinit ice id-as="fast-highlight" depth=1
-zinit light zdharma/fast-syntax-highlighting
+zi ice id-as="fast-highlight" depth=1
+zi light z-shell/fast-syntax-highlighting
 
 autoload -Uz compinit
 
 # Man pages
 [[ -d $ZPFX/man ]] && export MANPATH="$ZPFX/man:$MANPATH"
 
-### End Load Zinit
+### End Load ZI
 
 ## Keybindings
 [[ -f "$DOTFILES_HOME/keybindings.zsh" ]] && source "$DOTFILES_HOME/keybindings.zsh"

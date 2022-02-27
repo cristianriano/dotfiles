@@ -21,7 +21,7 @@ brew "curl"
 brew "openssl@1.1"
 # Internationalitation and localization
 brew "gettext"
-# Needed for some zinit packages
+# Needed for some ZI packages
 brew "go"
 # Privacy package (tools for signing, verifying, etc)
 brew "gnupg"
