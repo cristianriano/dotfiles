@@ -26,7 +26,7 @@ It contains:
 ## Zhell
 
 This configuration uses [ZI](https://z-shell.pages.dev/) for loading plugins, and leverages the Turbo mode to
-increass loading speed (currently ~600ms, run `timezsh` for a report of running 10 times).
+increass loading speed (currently ~290ms, run `timezsh` for a report from initializing zsh 10 times).
 
 To check the time to load each package\
 `zi time`

@@ -9,6 +9,8 @@ autoload colors && colors
 setopt interactivecomments # Comments on commands
 
 ## Global ENV
+# :- if parameter is null or unset substitute, otherwise nothing
+# :+ if parameter is null or unset, nothing is substituted, otherwise the expansion is substituted.
 export DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 export SHELL='/usr/local/bin/zsh'
 export ERL_AFLAGS="-kernel shell_history enabled"
@@ -31,15 +33,3 @@ export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --pre
 export DISABLE_SPRING=true
 
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
-
-# Set JAVA_HOME
-if asdf current java &> /dev/null; then
-  source "$HOME/.asdf/plugins/java/set-java-home.zsh"
-fi
-
-# Hook direnv into zsh
-# &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
-if command -v direnv &> /dev/null; then
-  eval "$(asdf exec direnv hook zsh)"
-  direnv() { asdf exec direnv "$@"; }
-fi

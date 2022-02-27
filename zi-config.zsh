@@ -52,18 +52,45 @@ zi light-mode for \
   z-shell/history-search-multi-word \
   zsh-users/zsh-history-substring-search
 
+# ZI plugin for diff-so-fancy https://github.com/z-shell/zsh-diff-so-fancy
+zi ice wait lucid as'program' pick'bin/git-dsf'
+zi load z-shell/zsh-diff-so-fancy
+
 ## Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
 # zi wait"1" lucid pack"bgn" depth=1 for pyenv
 # lucid: Removes `loaded` message for async
 
-# atload="!PATH+=:~/share"
-zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" fpath="completions" atload="!export FOO=bar"
+## ASDF
+
+function _post_zi_asdf() {
+  if ! command -v asdf &> /dev/null; then
+    return
+  fi
+
+  # TODO: Get this info from ZI
+  export ASDF_DIR=${ASDF_DIR:-"$ZI_HOME/plugins/asdf"}
+  export ASDF_HOME=${ASDF_HOME:-"$HOME/.asdf"}
+
+  # Set JAVA_HOME
+  if [[ -f "$ASDF_HOME/plugins/java/set-java-home.zsh" ]]; then
+    source "$HOME/.asdf/plugins/java/set-java-home.zsh"
+  fi
+
+  # Hook direnv into zsh
+  # &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
+  if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then
+    eval "$(asdf exec direnv hook zsh)"
+    direnv() { asdf exec direnv "$@"; }
+  fi
+}
+
+# The commented line configures ASDF without adding shims to the PATH
+# zi ice wait lucid depth=1 id-as="asdf" pick="lib/asdf.sh" atload='PATH+=":$ZI_HOME/plugins/asdf/bin/" ; _post_zi_asdf'
+zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='_post_zi_asdf'
 zi light asdf-vm/asdf
 
-# ZI plugin for diff-so-fancy https://github.com/z-shell/zsh-diff-so-fancy
-zi ice wait lucid as'program' pick'bin/git-dsf'
-zi load z-shell/zsh-diff-so-fancy
+## END ASDF
 
 ## Theme
 # Font
