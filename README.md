@@ -25,7 +25,7 @@ It contains:
 
 ## Zhell
 
-This configuration uses [ZI](https://github.com/z-shell/zi) for loading plugins, and leverages the Turbo mode to
+This configuration uses [ZI](https://z-shell.pages.dev/) for loading plugins, and leverages the Turbo mode to
 increass loading speed (currently ~600ms, run `timezsh` for a report of running 10 times).
 
 To check the time to load each package\
@@ -46,12 +46,12 @@ To update and compile it run\
 - [History search multi world](https://github.com/z-shell/history-search-multi-word)
 - [History substring search](https://github.com/zsh-users/zsh-history-substring-search)
 - [Fast Highlighting](https://github.com/z-shell/fast-syntax-highlighting)
+- [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 - [Power 10K theme](https://github.com/romkatv/powerlevel10k)
 
 ## TODO
 
-- Docker completion
-- Fancy diff
+- Remove `.asdf/shims` from path using direnv
 - Don't add twice `dotfiles/bin` to `PATH` when opening tmux
 
 ## Mac Configurations

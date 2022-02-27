@@ -5,6 +5,9 @@
 	editor = vim
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
+	pager = diff-so-fancy | less -FXRi
+[interactive]
+	diffFilter = diff-so-fancy --patch
 [pager]
 	branch = false
 [commit]
