@@ -64,12 +64,7 @@ zi load z-shell/zsh-diff-so-fancy
 ## ASDF
 
 function _post_zi_asdf() {
-  if ! command -v asdf &> /dev/null; then
-    return
-  fi
-
-  # TODO: Get this info from ZI
-  export ASDF_DIR=${ASDF_DIR:-"$ZI_HOME/plugins/asdf"}
+  export ASDF_DIR=${ASDF_DIR:-"$ZI[PLUGINS_DIR]/asdf"}
   export ASDF_HOME=${ASDF_HOME:-"$HOME/.asdf"}
 
   # Set JAVA_HOME
@@ -82,12 +77,14 @@ function _post_zi_asdf() {
   if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then
     eval "$(asdf exec direnv hook zsh)"
     direnv() { asdf exec direnv "$@"; }
+
+    [[ ! -f "$HOME/.envrc" ]] && echo 'use asdf' > "$HOME/.envrc"
   fi
 }
 
-# The commented line configures ASDF without adding shims to the PATH
-# zi ice wait lucid depth=1 id-as="asdf" pick="lib/asdf.sh" atload='PATH+=":$ZI_HOME/plugins/asdf/bin/" ; _post_zi_asdf'
-zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='_post_zi_asdf'
+# The commented line configures ASDF adding shims to the PATH. In which case global .envrc is not needed
+zi ice wait lucid depth=1 id-as="asdf" pick="lib/asdf.sh" atload='PATH+="!:$ZI_HOME/plugins/asdf/bin/" ; _post_zi_asdf'
+# zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='!_post_zi_asdf'
 zi light asdf-vm/asdf
 
 ## END ASDF

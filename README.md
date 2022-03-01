@@ -51,7 +51,6 @@ To update and compile it run\
 
 ## TODO
 
-- Remove `.asdf/shims` from path using direnv
 - Don't add twice `dotfiles/bin` to `PATH` when opening tmux
 
 ## Mac Configurations
