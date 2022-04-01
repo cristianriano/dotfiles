@@ -75,8 +75,14 @@ function _post_zi_asdf() {
   # Hook direnv into zsh
   # &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
   if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then
-    eval "$(asdf exec direnv hook zsh)"
-    direnv() { asdf exec direnv "$@"; }
+    if command -v direnv &> /dev/null; then
+      # Use system managed version
+      export ASDF_DIRENV_BIN="$(command -v direnv)"
+      eval "$($ASDF_DIRENV_BIN hook zsh)"
+    else
+      eval "$(asdf exec direnv hook zsh)"
+      direnv() { asdf exec direnv "$@"; }
+    fi
 
     [[ ! -f "$HOME/.envrc" ]] && echo 'use asdf' > "$HOME/.envrc"
   fi

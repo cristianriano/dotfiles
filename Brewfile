@@ -17,8 +17,7 @@ brew "cmake"
 brew "coreutils"
 # Transfer URL
 brew "curl"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
+brew "direnv"
 # Internationalitation and localization
 brew "gettext"
 # Needed for some ZI packages
@@ -40,6 +39,8 @@ brew "macvim"
 brew "mycli"
 # Open source relational database management system
 brew "mysql-client"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@1.1"
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
 brew "pgcli"
 # Compile .proto files

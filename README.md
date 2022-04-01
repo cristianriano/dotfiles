@@ -26,7 +26,7 @@ It contains:
 ## Zhell
 
 This configuration uses [ZI](https://z-shell.pages.dev/) for loading plugins, and leverages the Turbo mode to
-increass loading speed (currently ~290ms, run `timezsh` for a report from initializing zsh 10 times).
+increass loading speed (currently ~300ms, run `timezsh` for a report from initializing zsh 10 times).
 
 To check the time to load each package\
 `zi time`
@@ -52,6 +52,7 @@ To update and compile it run\
 ## TODO
 
 - Don't add twice `dotfiles/bin` to `PATH` when opening tmux
+- Syntax highlight in VsCode and Vim for .envrc
 
 ## Mac Configurations
 
@@ -110,6 +111,10 @@ There is also a [plugin](https://github.com/asdf-community/asdf-direnv) with `as
 And then allow the execution by running\
 `direnv allow`
 
+### Ruby
+- Generate a UUID on the fly\
+`ruby -r securerandom -e 'puts SecureRandom.uuid`
+
 ### Go
 - Install package from source\
 `go get github.com/mikefarah/yq/v4`
@@ -143,6 +148,9 @@ git diff --diff-filter AM --name-only --staged | grep "\.rb$" | xargs bundle exe
 `docker buildx build --tag mytag:1.0 --file Dockerfile --cache-from=type=local,src=/tmp/.buildx-cache --cache-to=type=local,dest=/tmp/.buildx-cache .`
 
 ## Known Issues
+
+### Global versions not detected
+If direnv is not creating the executable to the correct versions defined in `.tool-versions` then run `direnv reload`
 
 ### Erlang/Elixir observer doesn't update
 When running the Erlang observer `:observer.start` it doesn't render properly on Mac\
