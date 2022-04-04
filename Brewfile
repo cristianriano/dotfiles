@@ -11,6 +11,7 @@ brew "aspell"
 # GNU Standards-compliant Makefiles
 brew "autoconf"
 brew "automake"
+brew "awscli"
 # cat with syntax highlight
 brew "bat"
 brew "cmake"
