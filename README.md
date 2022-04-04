@@ -117,7 +117,7 @@ And then allow the execution by running\
 
 ### Go
 - Install package from source\
-`go get github.com/mikefarah/yq/v4`
+`go install github.com/mikefarah/yq/v4@latest`
 
 ### Tmux
 - New session\

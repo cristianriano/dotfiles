@@ -43,7 +43,7 @@ alias fzfx="fzf | xargs"
 ### Functions
 # Dotfiles
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-declare -ga dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs)
+declare -a dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs)
 
 function dotfiles_link () {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
@@ -52,8 +52,8 @@ function dotfiles_unlink () {
   for file in $dotfiles
   do
     local file_path="$HOME/$file"
-    if [[ -h $file_path ]] then; unlink $file_path
-    elif [[ -f $file_path ]] then; rm -f $file_path
+    if [[ -h $file_path ]]; then unlink $file_path
+    elif [[ -f $file_path ]]; then rm -f $file_path
     fi
   done
 }
