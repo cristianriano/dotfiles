@@ -24,7 +24,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
 zi ice id-as="autosuggestions"; zi light zsh-users/zsh-autosuggestions
 
 # Completions
-zi ice wait lucid blockf id-as="zsh-completions" atload"zicompinit; zicdreplay"
+zi ice wait lucid blockf id-as="zsh-completions"
 zi light zsh-users/zsh-completions
 
 zi snippet PZT::modules/completion
@@ -107,10 +107,11 @@ elif [[ -f ~/.p10k.zsh ]] then; source ~/.p10k.zsh
 fi
 
 # Syntax highlight must be the last one
-zi ice id-as="fast-highlight" depth=1
-zi light z-shell/fast-syntax-highlighting
+zi wait lucid for id-as="fast-highlight" \
+  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    z-shell/F-SY-H
 
-autoload -Uz compinit
+# autoload -Uz compinit
 # Call compinit after load zsh-completions
 
 # Man pages

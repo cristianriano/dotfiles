@@ -162,6 +162,12 @@ When installing Erlang 24 you get a message error about crypto library like this
 
 [Solution](https://youtu.be/w7JkhGrjnMY?t=94)
 
+### Compinit error messages
+
+```
+rm ~/.zcompdump* && compinit
+```
+
 ## Screenshots
 
 ![Tmux terminal](./screenshots/tmux.png)
