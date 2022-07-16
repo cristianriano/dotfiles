@@ -16,7 +16,7 @@ function git_prune_remote() {
 # Remove branches merged with a merge commit or rebase
 function git_remove_merged_local_branch() {
   # git branch --merged | egrep -v '(master|develop)$' | xargs git branch -d
-  git branch --merged | egrep -v '(master|develop)$' | xargs -I % git branch -D %
+  git branch --merged | egrep -v '(master|develop|main)$' | xargs -I % git branch -D %
 }
 
 # When we use `Squash and merge` on GitHub,
@@ -30,11 +30,12 @@ function git_remove_merged_local_branch() {
 # This clean up function cannot remove local squash-merged branch.
 # That's why you should execute `git pull-all` before
 function git_remove_squash_merged_local_branch() {
-  git checkout -q master &&
+  default_branch=${1:-main}
+  git checkout -q $default_branch &&
     git for-each-ref refs/heads/ "--format=%(refname:short)" |
     while read branch; do
-      ancestor=$(git merge-base master $branch) &&
-        [[ $(git cherry master $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
+      ancestor=$(git merge-base $default_branch $branch) &&
+        [[ $(git cherry $default_branch $(git commit-tree $(git rev-parse $branch^{tree}) -p $ancestor -m _)) == "-"* ]] &&
         git branch -D $branch
     done
 }
@@ -43,7 +44,7 @@ function git_remove_squash_merged_local_branch() {
 function gcl() {
   git_prune_remote
   git_remove_merged_local_branch
-  git_remove_squash_merged_local_branch
+  git_remove_squash_merged_local_branch $1
 }
 
-gcl
+gcl "$@"

@@ -49,7 +49,7 @@ zi light clvv/fasd
 ## History search
 # ctrl-r
 zi light-mode for \
-  z-shell/history-search-multi-word \
+  z-shell/H-S-MW \
   zsh-users/zsh-history-substring-search
 
 # ZI plugin for diff-so-fancy https://github.com/z-shell/zsh-diff-so-fancy
