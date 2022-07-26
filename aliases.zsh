@@ -45,10 +45,11 @@ alias fzfx="fzf | xargs"
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 declare -a dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs)
 
-function dotfiles_link () {
+dotfiles_link() {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
 }
-function dotfiles_unlink () {
+
+dotfiles_unlink() {
   for file in $dotfiles
   do
     local file_path="$HOME/$file"
@@ -59,7 +60,7 @@ function dotfiles_unlink () {
 }
 
 # Config folder
-function config_link() {
+config_link() {
   for f in $(ls -1 $DOTFILES_HOME/.config); do
     # If file exists regarding of the type (check man test for more options)
     if [[ ! -e $HOME/.config/$f ]]; then

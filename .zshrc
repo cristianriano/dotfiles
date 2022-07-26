@@ -33,3 +33,8 @@ export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --pre
 export DISABLE_SPRING=true
 
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
+
+# If only mysql libraries are installed the binaries need to be added explicitly to the PATH
+if [[ -d "/usr/local/opt/mysql-client/bin" ]] && ! command -v mysqldump
+  then export PATH="/usr/local/opt/mysql-client/bin":$PATH
+fi

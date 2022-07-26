@@ -89,8 +89,8 @@ function _post_zi_asdf() {
 }
 
 # The commented line configures ASDF adding shims to the PATH. In which case global .envrc is not needed
-zi ice wait lucid depth=1 id-as="asdf" pick="lib/asdf.sh" atload='PATH+="!:$ZI_HOME/plugins/asdf/bin/" ; _post_zi_asdf'
-# zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='!_post_zi_asdf'
+# zi ice wait lucid depth=1 id-as="asdf" pick="lib/asdf.sh" atload='PATH+="!:$ZI_HOME/plugins/asdf/bin/" ; _post_zi_asdf'
+zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='!_post_zi_asdf'
 zi light asdf-vm/asdf
 
 ## END ASDF
