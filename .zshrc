@@ -8,6 +8,9 @@ setopt share_history
 autoload colors && colors
 setopt interactivecomments # Comments on commands
 
+## Brew config
+HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+
 ## Global ENV
 # :- if parameter is null or unset substitute, otherwise nothing
 # :+ if parameter is null or unset, nothing is substituted, otherwise the expansion is substituted.
@@ -35,6 +38,6 @@ export DISABLE_SPRING=true
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 
 # If only mysql libraries are installed the binaries need to be added explicitly to the PATH
-if [[ -d "/usr/local/opt/mysql-client/bin" ]] && ! command -v mysqldump
+if [[ -d "/usr/local/opt/mysql-client/bin" ]] && ! command -v mysqldump &> /dev/null
   then export PATH="/usr/local/opt/mysql-client/bin":$PATH
 fi
