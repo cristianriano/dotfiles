@@ -10,11 +10,10 @@ alias j='fasd_cd -i' # Change dir interactively
 #alias cat="bat"
 alias e="emacs -nw"
 # Docker
-alias postgres_config="docker create --name postgres -p 5432:5432 -v "/Users/$(whoami)/code/data:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6"
-alias postgres_start="docker start postgres"
-alias dockredis="docker run -d --rm --name redis -p 6379:6379 -v "/Users/$(whoami)/code/volumes/redis:/data" redis:latest"
-alias dockpostgres11="docker run -d --rm --name postgres11 -p 5432:5432 -v "/Users/$(whoami)/code/data11:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11"
-alias dockmysql57="docker run -d --rm -it --name mysql57 -p 3307:3306 -v "/Users/$(whoami)/code/volumes/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD=password mysql:5.7"
+alias postgres_config="docker create --name postgres -p 5432:5432 -v "$HOME/code/volumes:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6"
+alias dockredis="docker run -d --rm --name redis -p 6379:6379 -v "$HOME/code/volumes/redis:/data" redis:latest"
+alias dockpostgres11="docker run -d --rm --name postgres11 -p 5432:5432 -v "$HOME/code/data11:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11"
+alias dockmysql57="docker run -d --rm --name mysql57 -p 3307:3306 -v "$HOME/code/volumes/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD=password mysql:5.7"
 # Git
 alias g="git"
 alias gst="git status"
@@ -43,7 +42,7 @@ alias fzfx="fzf | xargs"
 ### Functions
 # Dotfiles
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-declare -a dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs)
+declare -a dotfiles=(.gemrc .vimrc .zshrc .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs .iex.exs)
 
 dotfiles_link() {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done

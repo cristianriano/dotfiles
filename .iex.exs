@@ -1,3 +1,4 @@
+# Check the available colors and encoding with IO.ANSI
 IEx.configure(
   colors: [
     enabled: true,
@@ -10,6 +11,6 @@ IEx.configure(
     "\e[38;5;112m(%counter)", # forest green expression count
     "\e[38;5;220m>",          # gold ">"
     "\e[0m",                  # and reset to default color
-  ] 
+  ]
   |> IO.chardata_to_string
 )
