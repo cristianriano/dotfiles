@@ -11,7 +11,11 @@ It contains:
 - Scripts on Mac for battery, disk usage and temperature
 - .tmux.conf
 - .vimrc
-- Zsh configs .zlogin, .zprofile, .zshrc
+- Zsh configs (in execution orderder)
+  - .zshenv
+  - .zprofile
+  - .zshrc
+  - .zlogin
 
 ## Installation
 

@@ -116,5 +116,3 @@ zi wait lucid for id-as="fast-highlight" \
 
 # Man pages
 [[ -d $ZPFX/man ]] && export MANPATH="$ZPFX/man:$MANPATH"
-
-### End Load ZI
