@@ -37,8 +37,8 @@ zi wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
   pick="async.zsh" mafredri/zsh-async
 
-# Fuzzy Finder package (from Zsh-Packages/fzf)
-zi pack multisrc="shell/*.zsh" depth=1 for fzf
+# Fuzzy Finder package (from Zsh-Packages/fzf) (ctrl + T)
+zi pack"default+keys" for fzf
 
 # Fasd
 zi ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \

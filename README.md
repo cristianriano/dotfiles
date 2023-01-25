@@ -25,7 +25,7 @@ It contains:
 4. Run `brew bundle` inside the repo
 5. Set `zsh` as the default shell `chsh -s /bin/zsh`
 6. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
-7. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 409`
+7. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 4096`
 
 ## Zhell
 
