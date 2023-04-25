@@ -1,0 +1,58 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$directory\
+[](fg:4 bg:3)\
+$git_branch\
+$git_status\
+[](fg:3)\
+$character
+"""
+
+# $git_commit\
+# $git_state\
+# $git_metrics\
+# $hg_branch\
+
+right_format = '$all'
+
+add_newline = false
+# command_timeout = 1000
+
+[character]
+success_symbol = '[ ➜](bold green) '
+error_symbol = '[ ✗](#E84D44) '
+
+[directory]
+truncate_to_repo = true
+format = "[░▒▓](fg:4)[ ﱮ $path ]($style)"
+style = "fg:254 bg:4"
+
+[git_branch]
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#1C3A5E bg:3"
+
+[git_status]
+ahead     = "⇡${count}"
+diverged  = "⇡${ahead_count}⇣${behind_count}"
+behind    = "⇣${count}"
+untracked = '?$count '
+modified  = '!$count '
+stashed   = '*$count '
+staged    = '+$count '
+deleted   = '✘$count '
+format    = '[$conflicted$stashed$staged$deleted$renamed$modified$untracked]($style)'
+style     = "fg:#1C3A5E bg:3"
+
+[aws]
+disabled = true
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+
+[cmd_duration]
+format = "[  $duration ]($style)"
+style = "fg:bright-white bg:18"

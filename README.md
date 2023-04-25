@@ -27,7 +27,26 @@ It contains:
 6. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
 7. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 4096`
 
-## Zhell
+## Terminal
+
+### Font
+
+Terminal needs a Nerd font to allow you see all the icons & glyphs in the prompt.
+
+This setup uses `MesloLGM Nerd Font` which is downloaded automatically and saved in `~/Library/Fonts/`
+by ZI the first time zhell is started.
+
+If the Font is not detected by the system copy+paste them in the _Font Book_
+
+### iTerm
+
+Set the Font by going to _Preferences > Profiles > Text > Font_
+
+### Warp
+
+Set the Font by going to _Settings > Appearance > Text > Terminal Font_
+
+### Zhell
 
 This configuration uses [ZI](https://z-shell.pages.dev/) for loading plugins, and leverages the Turbo mode to
 increass loading speed (currently ~300ms, run `timezsh` for a report from initializing zsh 10 times).
@@ -38,7 +57,7 @@ To check the time to load each package\
 To update and compile it run\
 `zi self-update`
 
-### Packages list
+#### Packages list
 
 - [Autosuggestions Fish style](https://github.com/zsh-users/zsh-autosuggestions)
 - [Additional completions for zsh](https://github.com/zsh-users/zsh-completions)
@@ -53,7 +72,7 @@ To update and compile it run\
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 - [Power 10K theme](https://github.com/romkatv/powerlevel10k)
 
-## TODO
+### TODO
 
 - Don't add twice `dotfiles/bin` to `PATH` when opening tmux
 - Syntax highlight in VsCode and Vim for .envrc

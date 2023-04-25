@@ -50,6 +50,8 @@ brew "python@3.8"
 brew "readline"
 # Grep on esteroids
 brew "ripgrep"
+# Cross-shell prompt in Rust
+brew "starship"
 brew "telnet"
 # Terminal multiplexer
 brew "tmux"
@@ -82,3 +84,4 @@ cask "spotify"
 cask "tableplus"
 cask "the-unarchiver"
 cask "visual-studio-code"
+cask "warp"
