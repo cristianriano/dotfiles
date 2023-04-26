@@ -1,12 +1,27 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Color numbers
+# 0 - Black
+# 1 - Red
+# 2 - Green
+# 3 - Yellow
+# 4 - Blue
+# 5 - Magenta
+# 6 - Cyan
+# 7 - White
+# 8 - Bright Black
+# 9 - Bright Red/Orange
+# 10 - Bright Green
+
 format = """
 $directory\
-[](fg:4 bg:3)\
+[](fg:4 bg:7)\
 $git_branch\
 $git_status\
-[](fg:3)\
+[](fg:7 bg:8)\
+$time\
+$cmd_duration\
 $character
 """
 
@@ -22,17 +37,17 @@ add_newline = false
 
 [character]
 success_symbol = '[ ➜](bold green) '
-error_symbol = '[ ✗](#E84D44) '
+error_symbol   = '[ ✗](#E84D44) '
 
 [directory]
 truncate_to_repo = true
-format = "[░▒▓](fg:4)[ ﱮ $path ]($style)"
-style = "fg:254 bg:4"
+format           = "[░▒▓](fg:4)[ ﱮ $path ]($style)"
+style            = "fg:254 bg:4"
 
 [git_branch]
 format = '[ $symbol$branch(:$remote_branch) ]($style)'
-symbol = "  "
-style = "fg:#1C3A5E bg:3"
+symbol = " "
+style  = "fg:#1C3A5E bg:7"
 
 [git_status]
 ahead     = "⇡${count}"
@@ -44,15 +59,17 @@ stashed   = '*$count '
 staged    = '+$count '
 deleted   = '✘$count '
 format    = '[$conflicted$stashed$staged$deleted$renamed$modified$untracked]($style)'
-style     = "fg:#1C3A5E bg:3"
+style     = "fg:#1C3A5E bg:7"
 
 [aws]
 disabled = true
 
 [time]
 disabled = false
+format = "[  $time  ]($style)"
 time_format = "%R" # Hour:Minute Format
 
 [cmd_duration]
-format = "[  $duration ]($style)"
-style = "fg:bright-white bg:18"
+min_time = 1_000
+format   = "[  $duration ]($style)"
+style    = "fg:bright-white bg:18"
