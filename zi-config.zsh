@@ -101,9 +101,10 @@ zi ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
   atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
 zi light ryanoasis/nerd-fonts
 
-# Use either Starship or Powerlevel10k (default) for rendering depending on the Terminal
+# Use either Oh-My-Posh or Powerlevel10k (default) for rendering depending on the Terminal
 if [ "$TERM_PROGRAM" = "WarpTerminal" ]; then
-  eval "$(starship init zsh)"
+  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh.omp.json)"
+  # eval "$(starship init zsh)"
 else
   zi ice depth=1; zi load romkatv/powerlevel10k
   if [[ ($(ps -p $PPID) =~ 'Visual Studio') && (-f ~/.p10k-lean.zsh) ]] then; source ~/.p10k-lean.zsh
