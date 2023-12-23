@@ -10,6 +10,8 @@ setopt beep inc_append_history share_history interactivecomments hist_ignore_dup
 autoload colors && colors
 
 ## Brew config
+# Sets Brew config. Use /opt/homebrew/bin/ for M1 otherwise /usr/local/bin/
+eval "$(/opt/homebrew/bin/brew shellenv)"
 HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 ## ZI plugins, keybindings, aliases and functions
@@ -27,7 +29,9 @@ export DISABLE_SPRING=true
 
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 
-# If only mysql libraries are installed the binaries need to be added explicitly to the PATH
-if [[ -d "/usr/local/opt/mysql-client/bin" ]] && ! command -v mysqldump &> /dev/null
-  then export PATH="/usr/local/opt/mysql-client/bin":$PATH
-fi
+# Link keg-only Brew libraries
+export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
+
+# Docker default Platform (amd64 if M1)
+#export DOCKER_DEFAULT_PLATFORM=linux/x86_6
+export DOCKER_DEFAULT_PLATFORM=linux/amd64

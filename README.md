@@ -21,7 +21,7 @@ It contains:
 
 1. Install [Brew](https://brew.sh/) (This will also install dev tools if missing e.g `git`)
 2. Clone the repo `git clone https://github.com/cristianriano/dotfiles.git ~/dotfiles`
-3. Run `aliases.zsh` and then the function `dotfiles_link` on the shell
+3. Run `aliases.zsh` and then the functions `dotfiles_link` and `config_link` on the shell
 4. Run `brew bundle` inside the repo
 5. Set `zsh` as the default shell `chsh -s /bin/zsh`
 6. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
@@ -45,6 +45,12 @@ Set the Font by going to _Preferences > Profiles > Text > Font_
 ### Warp
 
 Set the Font by going to _Settings > Appearance > Text > Terminal Font_
+
+Activate prompt go to _Settings > Features > Session > Honor user's custom prompt (PS1)_
+
+Change themes _Setttings > Appearance > Themes_
+- Sync with OS
+- Solarized Dark & Light
 
 ### Zhell
 
