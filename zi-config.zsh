@@ -1,4 +1,6 @@
 ### Load ZI (https://github.com/z-shell/zi)
+# Docs: https://wiki.zshell.dev/docs/guides/syntax/ice-modifiers
+
 export ZI_HOME="${HOME}/.zi"
 if [[ ! -f "$ZI_HOME/bin/zi.zsh" ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}Z-SHELL%F{220} A Swiss Army Knife for Zsh (%F{33}z-shell/zi%F{220})…%f"
@@ -37,7 +39,7 @@ zi wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
   pick="async.zsh" mafredri/zsh-async
 
-# Fuzzy Finder package (from Zsh-Packages/fzf) (ctrl + T)
+# Fuzzy Finder package (from z-shell/fzf) (ctrl + T)
 zi pack"default+keys" for fzf
 
 # Fasd
@@ -55,6 +57,23 @@ zi light-mode for \
 # ZI plugin for diff-so-fancy https://github.com/z-shell/zsh-diff-so-fancy
 zi ice wait lucid as'program' pick'bin/git-dsf'
 zi load z-shell/zsh-diff-so-fancy
+
+## Theme
+# Font
+zi ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
+  atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
+zi light ryanoasis/nerd-fonts
+
+# Use either Oh-My-Posh or Powerlevel10k (default) for rendering depending on the Terminal
+if [ "$TERM_PROGRAM" = "WarpTerminal" ] && [ "$DISABLE_OH_MY_POSH" != "1" ]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh.omp.json)"
+  # eval "$(starship init zsh)"
+else
+  zi ice depth=1; zi load romkatv/powerlevel10k
+  if [[ ($(ps -p $PPID) =~ 'Visual Studio') && (-f ~/.p10k-lean.zsh) ]] then; source ~/.p10k-lean.zsh
+  elif [[ -f ~/.p10k.zsh ]] then; source ~/.p10k.zsh
+  fi
+fi
 
 ## Version Managers
 # Tarball with the bin-gem-node annex-utilizing ice list
@@ -89,36 +108,19 @@ function _post_zi_asdf() {
 }
 
 # The commented line configures ASDF adding shims to the PATH. In which case global .envrc is not needed
-# zi ice wait lucid depth=1 id-as="asdf" pick="lib/asdf.sh" atload='PATH+="!:$ZI_HOME/plugins/asdf/bin/" ; _post_zi_asdf'
+# Must be AFTER framework (oh-my-posh)
 zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='!_post_zi_asdf'
 zi light asdf-vm/asdf
 
 ## END ASDF
-
-## Theme
-# Font
-zi ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
-  atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
-zi light ryanoasis/nerd-fonts
-
-# Use either Oh-My-Posh or Powerlevel10k (default) for rendering depending on the Terminal
-if [ "$TERM_PROGRAM" = "WarpTerminal" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh.omp.json)"
-  # eval "$(starship init zsh)"
-else
-  zi ice depth=1; zi load romkatv/powerlevel10k
-  if [[ ($(ps -p $PPID) =~ 'Visual Studio') && (-f ~/.p10k-lean.zsh) ]] then; source ~/.p10k-lean.zsh
-  elif [[ -f ~/.p10k.zsh ]] then; source ~/.p10k.zsh
-  fi
-fi
 
 # Syntax highlight must be the last one
 zi wait lucid for id-as="fast-highlight" \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     z-shell/F-SY-H
 
-# autoload -Uz compinit
 # Call compinit after load zsh-completions
+autoload -Uz compinit
 
 # Man pages
 [[ -d $ZPFX/man ]] && export MANPATH="$ZPFX/man:$MANPATH"

@@ -14,7 +14,7 @@ export PAGER=less
 # :+ if parameter is null or unset, nothing is substituted, otherwise the expansion is substituted.
 skip_global_compinit=1
 export DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-export SHELL='/usr/local/bin/zsh'
+export SHELL='/opt/homebrew/bin/zsh'
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 #

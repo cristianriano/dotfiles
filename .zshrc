@@ -16,6 +16,7 @@ HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 ## ZI plugins, keybindings, aliases and functions
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
+DISABLE_OH_MY_POSH=1
 source "$DOTFILES_HOME/aliases.zsh"
 source "$DOTFILES_HOME/zi-config.zsh"
 source "$DOTFILES_HOME/keybindings.zsh"
