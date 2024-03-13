@@ -91,6 +91,13 @@ function _post_zi_asdf() {
     source "$HOME/.asdf/plugins/java/set-java-home.zsh"
   fi
 
+  # Set golang config
+  if [[ -d "$ASDF_HOME/plugins/golang" ]]; then
+    export GOROOT=$(asdf where golang)/go
+    export GOPATH=$(asdf where golang)/packages
+    export PATH="${PATH}:$(go env GOPATH)/bin"
+  fi
+
   # Hook direnv into zsh
   # &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
   if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then

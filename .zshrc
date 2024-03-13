@@ -36,3 +36,5 @@ export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 # Docker default Platform (amd64 if M1)
 #export DOCKER_DEFAULT_PLATFORM=linux/x86_6
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true

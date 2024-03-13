@@ -31,8 +31,11 @@ brew 'gnupg'
 brew 'grpcurl'
 # Improved top (interactive process viewer)
 brew 'htop'
+# Tools to manipulate images
+brew 'imagemagick'
 # JSON processor for the CLI
 brew 'jq'
+brew 'k9s'
 # Postgres C API library
 brew 'libpq', link: true
 # C library implementing the SSH2 protocol
@@ -54,6 +57,7 @@ brew 'pgcli'
 brew 'protobuf'
 brew 'python@3.8'
 brew 'readline'
+brew 'redis'
 # Grep on esteroids
 brew 'ripgrep'
 # Cross-shell prompt in Rust
@@ -80,11 +84,12 @@ cask 'brave-browser'
 cask 'caffeine'
 cask 'docker'
 cask 'emacs'
-# cask 'google-chrome'
+cask 'google-chrome'
 cask 'intellij-idea-ce'
 cask 'iterm2'
 cask 'maccy'
 cask 'postman'
+cask 'pycharm-ce'
 cask 'scroll-reverser'
 cask 'smcfancontrol'
 cask 'spotify'
