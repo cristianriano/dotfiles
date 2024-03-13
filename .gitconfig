@@ -30,4 +30,6 @@
 	process = git-lfs filter-process
 	required = true
 [fetch]
-	prune = true
+  prune = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
