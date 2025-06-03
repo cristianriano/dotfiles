@@ -10,8 +10,6 @@ setopt beep inc_append_history share_history interactivecomments hist_ignore_dup
 autoload colors && colors
 
 ## Brew config
-# Sets Brew config. Use /opt/homebrew/bin/ for M1 otherwise /usr/local/bin/
-eval "$(/opt/homebrew/bin/brew shellenv)"
 HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 ## ZI plugins, keybindings, aliases and functions
@@ -37,4 +35,35 @@ export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 #export DOCKER_DEFAULT_PLATFORM=linux/x86_6
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
+#### asdf config ####
+export ASDF_DIR=~/.asdf
+export PATH="$ASDF_DIR/shims:$PATH"
 export ASDF_GOLANG_MOD_VERSION_ENABLED=true
+
+# Set JAVA_HOME
+if [[ -f "$ASDF_DIR/plugins/java/set-java-home.zsh" ]]; then
+  source "$HOME/.asdf/plugins/java/set-java-home.zsh"
+fi
+
+# Set golang config
+if [[ -d "$ASDF_DIR/plugins/golang" ]]; then
+  export GOROOT=$(asdf where golang)/go
+  export GOPATH=$(asdf where golang)/packages
+  export PATH="$(go env GOPATH)/bin:$PATH"
+fi
+
+# Hook direnv into zsh
+# &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
+if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then
+  if command -v direnv &> /dev/null; then
+    # Use system managed version
+    export ASDF_DIRENV_BIN="$(command -v direnv)"
+    eval "$($ASDF_DIRENV_BIN hook zsh)"
+  else
+    eval "$(asdf exec direnv hook zsh)"
+    direnv() { asdf exec direnv "$@"; }
+  fi
+
+  [[ ! -f "$HOME/.envrc" ]] && echo 'use asdf' > "$HOME/.envrc"
+fi
+### end asdf config ###

@@ -1,6 +1,11 @@
 # For login shells. Basically the same as .zlogin except that it's sourced BEFORE .zshrc
 
 #
+# Sets Brew config. Use /opt/homebrew/bin/ for M1 otherwise /usr/local/bin/
+#
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+#
 # Browser
 #
 if [[ "$OSTYPE" == darwin* ]]; then

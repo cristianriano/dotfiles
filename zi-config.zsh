@@ -80,47 +80,6 @@ fi
 # zi wait"1" lucid pack"bgn" depth=1 for pyenv
 # lucid: Removes `loaded` message for async
 
-## ASDF
-
-function _post_zi_asdf() {
-  export ASDF_DIR=${ASDF_DIR:-"$ZI[PLUGINS_DIR]/asdf"}
-  export ASDF_HOME=${ASDF_HOME:-"$HOME/.asdf"}
-
-  # Set JAVA_HOME
-  if [[ -f "$ASDF_HOME/plugins/java/set-java-home.zsh" ]]; then
-    source "$HOME/.asdf/plugins/java/set-java-home.zsh"
-  fi
-
-  # Set golang config
-  if [[ -d "$ASDF_HOME/plugins/golang" ]]; then
-    export GOROOT=$(asdf where golang)/go
-    export GOPATH=$(asdf where golang)/packages
-    export PATH="${PATH}:$(go env GOPATH)/bin"
-  fi
-
-  # Hook direnv into zsh
-  # &>: Redirect file descriptor 1-2 (STDOUT-STERR, 0 is STDIN) to the file on the other side of operand
-  if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then
-    if command -v direnv &> /dev/null; then
-      # Use system managed version
-      export ASDF_DIRENV_BIN="$(command -v direnv)"
-      eval "$($ASDF_DIRENV_BIN hook zsh)"
-    else
-      eval "$(asdf exec direnv hook zsh)"
-      direnv() { asdf exec direnv "$@"; }
-    fi
-
-    [[ ! -f "$HOME/.envrc" ]] && echo 'use asdf' > "$HOME/.envrc"
-  fi
-}
-
-# The commented line configures ASDF adding shims to the PATH. In which case global .envrc is not needed
-# Must be AFTER framework (oh-my-posh)
-zi ice wait lucid depth=1 id-as="asdf" pick="asdf.sh" atload='!_post_zi_asdf'
-zi light asdf-vm/asdf
-
-## END ASDF
-
 # Syntax highlight must be the last one
 zi wait lucid for id-as="fast-highlight" \
   atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \

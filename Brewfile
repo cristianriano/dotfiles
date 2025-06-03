@@ -2,12 +2,8 @@
 
 # tap 'adoptopenjdk/openjdk'
 tap 'dbcli/tap'
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/cask-versions'
-tap 'homebrew/core'
-tap 'homebrew/services'
 
+brew 'asdf'
 # Spell checker
 brew 'aspell'
 # GNU Standards-compliant Makefiles
@@ -49,14 +45,11 @@ brew 'mycli'
 brew 'mysql-client'
 # Prompt theme
 brew 'oh-my-posh'
-# Cryptography and SSL/TLS Toolkit
-brew 'openssl@1.1'
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
 brew 'pgcli'
 # Compile .proto files
 brew 'protobuf'
-brew 'python@3.8'
-brew 'readline'
+#brew 'readline'
 brew 'redis'
 # Grep on esteroids
 brew 'ripgrep'
@@ -88,6 +81,7 @@ cask 'google-chrome'
 cask 'intellij-idea-ce'
 cask 'iterm2'
 cask 'maccy'
+cask 'opera'
 cask 'postman'
 cask 'pycharm-ce'
 cask 'scroll-reverser'
