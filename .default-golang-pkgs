@@ -2,3 +2,4 @@ golang.org/x/tools/gopls@latest
 github.com/mikefarah/yq/v4
 github.com/google/gops@latest
 golang.org/x/tools/cmd/goimports@latest
+github.com/go-delve/delve/cmd/dlv@latest

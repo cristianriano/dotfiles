@@ -28,6 +28,28 @@ It contains:
 7. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
 8. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
 
+### Elixir
+
+Installing Elixir requires Erlang too. We will use `asdf` to be able to have multiple versions.
+
+Elixir versioning have `x.y.z-otp-w`, this is a pre-compiled version for W major Erlang version. The
+version without `otp` is that compiled against the oldest OTP release supported by that version. We
+will go with the precompiled version of the major Erlang supported.
+
+1. Install dependencies with brew (table below). The only recommended one is `wxmac` to run the observer.
+   Use `brew install --build-from-source wxmac`
+2. Install the latest Erlang compatible with the Elixir version you want `asdf install erlang x.y`
+   (Optional: Install documentation for Erlang modules with `KERL_BUILD_DOCS=yes` used in iex)\
+   **NOTE: When installing OTP < 25 set export KERL_CONFIGURE_OPTIONS="--with-ssl=$(brew --prefix openssl) --without-javac"**
+3. Install elixir precompiled version for the Erlang chosen
+
+| Dependency | Required? | Why install?                                |
+| ---------- | --------- | ------------------------------------------- |
+| fop        | 🚫        | Only for building PDF docs                  |
+| unixodbc   | 🚫        | Only if you use ODBC                        |
+| openjdk    | 🚫        | Already have JDK; optional for Java interop |
+| wxmac      | 🔶        | Optional but recommended for :observer      |
+
 ## Terminal
 
 ### Font
@@ -105,13 +127,6 @@ Keyboard settings > Keyboard
 
 _Scroll Reverser_
 Install it from [here](https://pilotmoon.com/scrollreverser/)
-
-### Visual Studio
-
-1. Install settings Sync
-2. Login using Github and choose the gist
-3. Enable auto download
-4. Trigger "Download Settings"
 
 ## Cheatsheet
 
@@ -194,11 +209,6 @@ git diff --diff-filter AM --name-only --staged | grep "\.rb$" | xargs bundle exe
 ### Global versions not detected
 
 If direnv is not creating the executable to the correct versions defined in `.tool-versions` then run `direnv reload`
-
-### Erlang/Elixir observer doesn't update
-
-When running the Erlang observer `:observer.start` it doesn't render properly on Mac\
-[Solution](https://github.com/elixir-lang/elixir/issues/9997#issuecomment-624390925)
 
 ### Installing Erlang 24
 

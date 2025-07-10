@@ -42,7 +42,7 @@ alias fzfx="fzf | xargs"
 ### Functions
 # Dotfiles
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-declare -a dotfiles=(.gemrc .vimrc .zshrc .zshenv .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs .iex.exs)
+declare -a dotfiles=(.gemrc .vimrc .zshrc .zshenv .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs .iex.exs .default-mix-commands)
 
 dotfiles_link() {
   for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
