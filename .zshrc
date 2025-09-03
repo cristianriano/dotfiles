@@ -5,6 +5,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
+SQLITE_HISTORY="~/.sqlite_history"
 
 setopt beep inc_append_history share_history interactivecomments hist_ignore_dups
 autoload colors && colors
