@@ -22,7 +22,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-signify'
 
 Plug 'valloric/youcompleteme', {
-  \ 'do': 'cd ~/.vim/plugged/youcompleteme && python3 install.py --all'
+  \ 'do': 'cd ~/.vim/plugged/youcompleteme && python3 install.py --go-completer --ts-completer --java-comple'
   \ }
 Plug 'slashmili/alchemist.vim'
 

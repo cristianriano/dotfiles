@@ -1,14 +1,23 @@
 # Dotfiles
 
 This repo is a collection of my dotfiles and configurations for zsh, tmux, vim, git and some custom scripts.
-It contains:
 
-- aliases.zsh
-- .asfrc
+Workspace uses [Warp](https://www.warp.dev/) terminal, [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager.
+
+Files it provides:
+
+- aliases.zsh (custom aliases and functions)
+- zi-config.zsh (plugin installation and configuration for zi)
+- keybindings.zsh
+- .p10k.zsh and .p10k-lean.zsh (full and lite config for theme)
+- .asdfrc and .default-\* (for asdf config and plugins)
 - Brewfile for Brew packages
 - Global .gitattributes, .gitconfig and .gitignore
 - Ruby's .gemrc, .pryrc
+- Elixir's .iex.exs
 - Scripts on Mac for battery, disk usage and temperature
+- .sqliterc (sqlite3)
 - .tmux.conf
 - .vimrc
 - Zsh configs (in execution orderder)
@@ -23,10 +32,10 @@ It contains:
 2. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 4096` and add it as your default identity `ssh-add ~/.ssh/id_rsa`
 3. Clone the repo `git clone https://github.com/cristianriano/dotfiles.git ~/dotfiles`
 4. Run `source aliases.zsh` and then the functions `dotfiles_link` and `config_link` on the shell
-5. Open vim and run `:PlugInstall`
-6. Run `brew bundle` inside the repo
-7. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
-8. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
+5. Run `brew bundle` inside the repo (check commented dependencies if needed)
+6. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
+7. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
+8. Open vim and run `:PlugInstall` (make sure to install any node and java version before otherwise YouCompleteMe plugin will fail)
 
 ### Elixir
 
@@ -67,11 +76,12 @@ Set the Font by going to _Preferences > Profiles > Text > Font_
 
 ### Warp
 
-Set the Font by going to _Settings > Appearance > Text > Terminal Font_
+Change the following _Settings_:
 
-Activate prompt go to _Settings > Features > Session > Honor user's custom prompt (PS1)_
-
-Change themes _Setttings > Appearance > Themes_
+1. Set the `Meslo` Font _Appearance > Text > Terminal Font_
+2. Activate prompt go to _Features > Session > Honor user's custom prompt (PS1)_
+3. Dim inactive panes _Appearance > Panes > Dim inactive_
+4. Change themes _Appearance > Themes_
 
 - Sync with OS
 - Solarized Dark & Light
@@ -165,7 +175,7 @@ And then allow the execution by running\
 ### Ruby
 
 - Generate a UUID on the fly\
-  `ruby -r securerandom -e 'puts SecureRandom.uuid`
+  `ruby -r securerandom -e 'puts SecureRandom.uuid'`
 
 ### Go
 
@@ -226,4 +236,4 @@ rm ~/.zcompdump* && compinit
 
 ## Screenshots
 
-![Tmux terminal](./screenshots/tmux.png)
+![Warp](./screenshots/warp.png)

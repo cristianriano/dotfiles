@@ -32,9 +32,10 @@ export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 # Link keg-only Brew libraries
 export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 
-# Docker default Platform (amd64 if M1)
+# Docker default Platform (arm64 if MX)
 #export DOCKER_DEFAULT_PLATFORM=linux/x86_6
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+#export DOCKER_DEFAULT_PLATFORM=linux/amd64
+#export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 #### asdf config ####
 export ASDF_DIR=~/.asdf
@@ -48,9 +49,7 @@ fi
 
 # Set golang config
 if [[ -d "$ASDF_DIR/plugins/golang" ]]; then
-  export GOROOT=$(asdf where golang)/go
-  export GOPATH=$(asdf where golang)/packages
-  export PATH="$(go env GOPATH)/bin:$PATH"
+  source ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
 fi
 
 # Hook direnv into zsh

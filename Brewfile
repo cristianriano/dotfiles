@@ -17,6 +17,7 @@ brew 'coreutils'
 # Transfer URL
 brew 'curl'
 brew 'direnv'
+brew 'docker'
 # Internationalitation and localization
 brew 'gettext'
 # Needed for some ZI packages
@@ -44,7 +45,7 @@ brew 'mycli'
 # Open source relational database management system
 brew 'mysql-client'
 # Prompt theme
-brew 'oh-my-posh'
+# brew 'oh-my-posh'
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
 brew 'pgcli'
 # Compile .proto files
@@ -54,7 +55,9 @@ brew 'redis'
 # Grep on esteroids
 brew 'ripgrep'
 # Cross-shell prompt in Rust
-brew 'starship'
+# brew 'starship'
+# Console based TODO list manager (https://taskwarrior.org)
+brew 'task'
 brew 'telnet'
 # Terminal multiplexer
 brew 'tmux'
@@ -69,14 +72,13 @@ brew 'watch'
 brew 'wget'
 # brew 'wxmac' # Need to use --build-from-source flag as brew stopped supporting it
 # JavaScript package manager
-# brew 'yarn' # Use asdf
 # UNIX shell (command interpreter)
 brew 'zsh'
 ## Casks
 cask 'alfred'
 cask 'brave-browser'
 cask 'caffeine'
-cask 'docker'
+# cask 'docker' # If docker desktop is available
 cask 'emacs'
 cask 'google-chrome'
 cask 'intellij-idea-ce'
