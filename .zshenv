@@ -21,9 +21,13 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Paths
 #
 # Set the list of directories that Zsh searches for programs.
+if [[ ! -d "$HOME/.local" ]]; then
+  mkdir -p "$HOME/.local"
+fi
+
 path=(
   /usr/local/{bin,sbin}
-  $DOTFILES_HOME/bin
+  "$HOME/.local/bin"
   $path
 )
 
