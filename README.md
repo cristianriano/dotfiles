@@ -35,7 +35,7 @@ Files it provides:
 5. Run `brew bundle` inside the repo (check commented dependencies if needed)
 6. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
 7. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
-8. Open vim and run `:PlugInstall` (make sure to install any node and java version before otherwise YouCompleteMe plugin will fail)
+8. Install [vim plugins](#vim)
 
 ### Elixir
 
@@ -112,39 +112,50 @@ To update and compile it run\
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 - [Power 10K theme](https://github.com/romkatv/powerlevel10k)
 
-### TODO
-
-- Don't add twice `dotfiles/bin` to `PATH` when opening tmux
-- Syntax highlight in VsCode and Vim for .envrc
-
-## Mac Configurations
+## Configurations
 
 ### Keyboard
 
-_Change between Desktops_
+#### Change between Desktops
+
 Keyboard settings > Shortcuts > Mission Control
 
 1. Move left a space -> Ctrl-Cmd-Left
 2. Disable Ctrl-Up and Ctrl-Down
 
-**Key repetition**
+#### Key repetition
+
 Keyboard settings > Keyboard
 
 1. Key repeat -> Fast
 2. Delay Until repeat -> Short
 
-### Mouse
+#### Disable conflicting shortcuts
 
-_Scroll Reverser_
-Install it from [here](https://pilotmoon.com/scrollreverser/)
+Keyboard settings > Shortcuts > Services > Text
+
+- Search man page index in Terminal (Cmd+Shift+A)
+
+### Apps
+
+#### BetterSnapTool
+
+Installed from Appstore ([homepage](https://folivora.ai/bettersnaptool))
+Used for window management. Set the shortcuts for:
+
+- Left half: Cmd+Alt+Ctrl+Left
+- Right half: Cmd+Alt+Ctrl+Right
+- Maximize: Cmd+Alt+Ctrl+M
+- Maximize on next monitor: Cmd+Alt+Ctrl+Up
 
 ## Cheatsheet
 
 ### Vim
 
 There is a minimalistic Vim setup using [vim-plug](https://github.com/junegunn/vim-plug).
+Install plugins with `:PlugInstall` (make sure to install **any node and java version** before otherwise **YouCompleteMe** plugin will fail)
 
-To install new plugins add it to the `.vimrc` file and run `:PlugInstall` inside vim
+To install new plugins add them to `.vimrc` and run `:PlugInstall` in vim
 
 ### ASDF
 
