@@ -1,5 +1,5 @@
 ### General
-Pry.editor = ENV['VISUAL'] || 'vim'
+Pry.editor = ENV['VISUAL'] || 'nvim'
 
 ### Listing
 Pry.config.ls.separator = " "

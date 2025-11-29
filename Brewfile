@@ -44,6 +44,7 @@ brew 'macvim'
 brew 'mycli'
 # Open source relational database management system
 brew 'mysql-client'
+brew 'nvim'
 # Prompt theme
 # brew 'oh-my-posh'
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
@@ -76,10 +77,9 @@ brew 'wget'
 brew 'zsh'
 ## Casks
 cask 'alfred'
-cask 'brave-browser'
+# cask 'brave-browser'
 cask 'caffeine'
 # cask 'docker' # If docker desktop is available
-cask 'emacs'
 cask 'google-chrome'
 cask 'intellij-idea-ce'
 cask 'iterm2'

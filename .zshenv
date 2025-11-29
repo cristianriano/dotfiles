@@ -3,7 +3,7 @@
 #
 # Editors
 #
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=code
 export PAGER=less
 

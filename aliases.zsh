@@ -8,7 +8,7 @@ alias ....="cd ../../.."
 #alias rm="rm -i"
 alias j='fasd_cd -i' # Change dir interactively
 #alias cat="bat"
-alias e="emacs -nw"
+alias n="nvim"
 # Docker
 alias postgres_config="docker create --name postgres -p 5432:5432 -v "$HOME/code/volumes:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6"
 alias dockredis="docker run -d --rm --name redis -p 6379:6379 -v "$HOME/code/volumes/redis:/data" redis:latest"
@@ -60,7 +60,7 @@ dotfiles_unlink() {
 
 # Config folder
 config_link() {
-  mkdir $HOME/.config
+  mkdir -p $HOME/.config
   for f in $(ls -1 $DOTFILES_HOME/.config); do
     # If file exists regarding of the type (check man test for more options)
     if [[ ! -e $HOME/.config/$f ]]; then

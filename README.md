@@ -19,7 +19,7 @@ Files it provides:
 - Scripts on Mac for battery, disk usage and temperature
 - .sqliterc (sqlite3)
 - .tmux.conf
-- .vimrc
+- nvim config
 - Zsh configs (in execution orderder)
   - .zshenv
   - .zprofile
@@ -35,7 +35,7 @@ Files it provides:
 5. Run `brew bundle` inside the repo (check commented dependencies if needed)
 6. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
 7. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
-8. Install [vim plugins](#vim)
+8. Open `nvim` to install [LazyVim](https://www.lazyvim.org/)
 
 ### Elixir
 

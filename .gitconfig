@@ -3,7 +3,7 @@
 	email = cristiancarm11@gmail.com
 [core]
 	attributesfile = ~/.gitattributes
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore
 	ignoreCase = false
 	pager = diff-so-fancy | less -FXRi
