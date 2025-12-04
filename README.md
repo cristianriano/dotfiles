@@ -35,7 +35,7 @@ Files it provides:
 5. Run `brew bundle` inside the repo (check commented dependencies if needed)
 6. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
 7. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
-8. Open `nvim` to install [LazyVim](https://www.lazyvim.org/)
+8. Open `nvim` to install [LazyVim](https://www.lazyvim.org/) (install lua > 5.1 first)
 
 ### Elixir
 
@@ -132,9 +132,16 @@ Keyboard settings > Keyboard
 
 #### Disable conflicting shortcuts
 
-Keyboard settings > Shortcuts > Services > Text
+Keyboard settings > Shortcuts
+
+1. Services > Text
 
 - Search man page index in Terminal (Cmd+Shift+A)
+
+2. Mission Control
+
+- Mission Control
+- Application Window
 
 ### Apps
 
