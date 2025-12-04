@@ -16,6 +16,7 @@ skip_global_compinit=1
 export DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 export SHELL='/opt/homebrew/bin/zsh'
 export ERL_AFLAGS="-kernel shell_history enabled"
+export MANPATH="/usr/share/man"
 
 #
 # Paths

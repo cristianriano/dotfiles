@@ -1,6 +1,7 @@
 .vscode/
 .dccache
 .idea/
+*.iml
 
 # Mac
 .DS_Store
