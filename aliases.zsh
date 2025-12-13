@@ -38,6 +38,8 @@ alias tmuxl="tmux ls"
 alias tmuxn="tmux new"
 # Fzf
 alias fzfx="fzf | xargs"
+# Kubernetes
+alias k="kubectl"
 
 ### Functions
 # Dotfiles
@@ -74,3 +76,12 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
+
+# Force myself to use rg instead of grep
+grep() {
+  if [ -t 1 ]; then  # Only print the warning if stdout is a terminal
+    echo "⚠️  WARNING: Use 'rg' (ripgrep) instead 'grep' for faster searches.\n\n" >&2
+  fi
+  command grep "$@"
+}
+
