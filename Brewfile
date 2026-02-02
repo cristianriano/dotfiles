@@ -18,6 +18,8 @@ brew 'coreutils'
 brew 'curl'
 brew 'direnv'
 brew 'docker'
+# Fuzzy Finder
+brew 'fzf'
 # Internationalitation and localization
 brew 'gettext'
 # Needed for some ZI packages

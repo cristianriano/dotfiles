@@ -3,16 +3,16 @@
 This repo is a collection of my dotfiles and configurations for zsh, tmux, vim, git and some custom scripts.
 
 Workspace uses [Warp](https://www.warp.dev/) terminal, [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager.
+theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager for shell behaviour.
 
 Files it provides:
 
 - aliases.zsh (custom aliases and functions)
-- zi-config.zsh (plugin installation and configuration for zi)
+- zi-config.zsh (plugin installation and configuration for zi. Only affects interactive zsh)
 - keybindings.zsh
 - .p10k.zsh and .p10k-lean.zsh (full and lite config for theme)
 - .asdfrc and .default-\* (for asdf config and plugins)
-- Brewfile for Brew packages
+- Brewfile (binaries and system resources)
 - Global .gitattributes, .gitconfig and .gitignore
 - Ruby's .gemrc, .pryrc
 - Elixir's .iex.exs
@@ -36,6 +36,13 @@ Files it provides:
 6. [OPTIONAL] Set `zsh` as the default shell `chsh -s /bin/zsh`
 7. Open a new terminal, it should download `zi` and install the packages (you might have to do it multiple times)
 8. Open `nvim` to install [LazyVim](https://www.lazyvim.org/) (install lua > 5.1 first)
+
+## TODOs
+
+Things to improve or at least consider and make a decision (in no particular order)
+
+- Install fonts via Brew (`font-meslo-lg-nerd-font`) instead of zi. Fonts are a system resource not shell specific. (Update README too)
+- Clean up Oh-my-posh. Haven't switched in years
 
 ### Elixir
 
@@ -79,20 +86,27 @@ Set the Font by going to _Preferences > Profiles > Text > Font_
 Change the following _Settings_:
 
 1. Set the `Meslo` Font _Appearance > Text > Terminal Font_
-2. Activate prompt go to _Features > Session > Honor user's custom prompt (PS1)_
+2. Set Input to classic. Go to _Appearance > Input > Classic_
 3. Dim inactive panes _Appearance > Panes > Dim inactive_
 4. Change themes _Appearance > Themes_
 
 - Sync with OS
 - Solarized Dark & Light
 
+#### Known Issues
+
+Because Warp wraps each execution in a block, many plugins for zshell do not work properly. The ones I confirm:
+
+- zsh-autopair: Auto pair/delete delimiters
+- fzf bindings: Ctrl+T to select multiple files
+- [powerlevel10k "show on command"](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#show-on-command)
+
 ### Zhell
 
 This configuration uses [ZI](https://z-shell.pages.dev/) for loading plugins, and leverages the Turbo mode to
-increass loading speed (currently ~300ms, run `timezsh` for a report from initializing zsh 10 times).
+increass loading speed (run `timezsh` for a report from initializing zsh 10 times).
 
-To check the time to load each package\
-`zi time`
+List packages and delete them with `zi list` and `zi delete <name>`
 
 To update and compile it run\
 `zi self-update`
@@ -103,7 +117,6 @@ To update and compile it run\
 - [Additional completions for zsh](https://github.com/zsh-users/zsh-completions)
 - [Prezto completions](https://github.com/sorin-ionescu/prezto/tree/master/modules/completion)
 - [Auto pair/delete delimiters](https://github.com/hlissner/zsh-autopair)
-- [FZF - Command line Fuzzy Finder](https://github.com/junegunn/fzf)
 - [Fasd](https://github.com/clvv/fasd)
 - [ASDF - Version Manager](https://github.com/asdf-vm/asdf)
 - [History search multi world](https://github.com/z-shell/history-search-multi-word)
@@ -168,17 +181,11 @@ To install new plugins add them to `.vimrc` and run `:PlugInstall` in vim
 
 Available plugins [here](https://github.com/asdf-vm/asdf-plugins)
 
-- List all available versions\
-  `asdf list`
-
-- Current versions\
-  `asdf current`
-
 - Update all plugins\
   `asdf plugin update --all`
 
 - Reshim
-  `asdf reshim ruby`
+  `asdf reshim`
 
 #### Direnv
 

@@ -12,6 +12,8 @@ export PAGER=less
 #
 # :- if parameter is null or unset substitute, otherwise nothing
 # :+ if parameter is null or unset, nothing is substituted, otherwise the expansion is substituted.
+
+# Skip potentially early compinit. Instead handled manually when installing `zsh-completions` in zi-config.zsh
 skip_global_compinit=1
 export DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 export SHELL='/opt/homebrew/bin/zsh'

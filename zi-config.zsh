@@ -26,7 +26,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=1"
 zi ice id-as="autosuggestions"; zi light zsh-users/zsh-autosuggestions
 
 # Completions
-zi ice wait lucid blockf id-as="zsh-completions"
+zi ice wait lucid blockf atinit"zicompinit; zicdreplay" id-as="zsh-completions"
 zi light zsh-users/zsh-completions
 
 zi snippet PZT::modules/completion
@@ -39,8 +39,10 @@ zi wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
   pick="async.zsh" mafredri/zsh-async
 
-# Fuzzy Finder package (from z-shell/fzf) (ctrl + T)
-zi pack"default+keys" for fzf
+# Binds fzf widgets via `bindkey` (ctrl + T | ctrl + R)
+zi snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+# Fzf completion (**<TAB>)
+zi snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
 
 # Fasd
 zi ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
@@ -81,12 +83,7 @@ fi
 # lucid: Removes `loaded` message for async
 
 # Syntax highlight must be the last one
-zi wait lucid for id-as="fast-highlight" \
-  atinit"ZI[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    z-shell/F-SY-H
-
-# Call compinit after load zsh-completions
-autoload -Uz compinit
+zi wait lucid for id-as="fast-highlight" z-shell/F-SY-H
 
 # Man pages
 [[ -d $ZPFX/man ]] && export MANPATH="$ZPFX/man:$MANPATH"
