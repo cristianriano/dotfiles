@@ -18,6 +18,9 @@ brew 'coreutils'
 brew 'curl'
 brew 'direnv'
 brew 'docker'
+brew 'docker-buildx'
+brew 'docker-compose'
+brew 'docker-completion'
 # Fuzzy Finder
 brew 'fzf'
 # Internationalitation and localization

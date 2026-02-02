@@ -32,9 +32,6 @@ zi light zsh-users/zsh-completions
 zi snippet PZT::modules/completion
 zstyle ':completion:*' completer _complete _match _expand
 
-zi ice as="completion" id-as="docker-completions"
-zi snippet https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker
-
 zi wait lucid light-mode depth=1 for \
   pick="autopair.zsh" atload="autopair-init" hlissner/zsh-autopair \
   pick="async.zsh" mafredri/zsh-async
