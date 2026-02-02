@@ -41,12 +41,6 @@ zi snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 # Fzf completion (**<TAB>)
 zi snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
 
-# Fasd
-zi ice as="command" pick="$ZPFX/bin/fasd" make="!PREFIX=$ZPFX install" \
-  atclone="mkdir -p $ZPFX/bin; cp -vf fasd $ZPFX/bin" atpull="%atclone" depth=1 \
-  atload='eval "$(fasd --init auto)"'
-zi light clvv/fasd
-
 ## History search
 # ctrl-r
 zi light-mode for \

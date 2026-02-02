@@ -117,7 +117,6 @@ To update and compile it run\
 - [Additional completions for zsh](https://github.com/zsh-users/zsh-completions)
 - [Prezto completions](https://github.com/sorin-ionescu/prezto/tree/master/modules/completion)
 - [Auto pair/delete delimiters](https://github.com/hlissner/zsh-autopair)
-- [Fasd](https://github.com/clvv/fasd)
 - [ASDF - Version Manager](https://github.com/asdf-vm/asdf)
 - [History search multi world](https://github.com/z-shell/history-search-multi-word)
 - [History substring search](https://github.com/zsh-users/zsh-history-substring-search)

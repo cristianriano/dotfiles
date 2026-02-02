@@ -77,7 +77,8 @@ brew 'watch'
 # Internet file retriever
 brew 'wget'
 # brew 'wxmac' # Need to use --build-from-source flag as brew stopped supporting it
-# JavaScript package manager
+# Smarter cd command (z jump)
+brew 'zoxide'
 # UNIX shell (command interpreter)
 brew 'zsh'
 ## Casks

@@ -38,7 +38,10 @@ alias tmuxl="tmux ls"
 alias tmuxn="tmux new"
 # Fzf
 alias fzfx="fzf | xargs"
-# Kubernetes
+# Zoxide (define alias manually otherwise they collide with zshell pkg manager)
+alias z='__zoxide_z'
+alias zz='__zoxide_zi'
+# K8S
 alias k="kubectl"
 
 ### Functions

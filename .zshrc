@@ -39,7 +39,7 @@ export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 # Link keg-only Brew libraries
 export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
 
-# Docker default Platform (arm64 if MX)
+# Docker default Platform (arm64 if apple silicon)
 #export DOCKER_DEFAULT_PLATFORM=linux/x86_6
 #export DOCKER_DEFAULT_PLATFORM=linux/amd64
 #export DOCKER_DEFAULT_PLATFORM=linux/arm64
@@ -74,3 +74,5 @@ if [[ -d "$ASDF_HOME/plugins/direnv" ]]; then
   [[ ! -f "$HOME/.envrc" ]] && echo 'use asdf' > "$HOME/.envrc"
 fi
 ### end asdf config ###
+
+eval "$(zoxide init zsh --no-cmd)"
