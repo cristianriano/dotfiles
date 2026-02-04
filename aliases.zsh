@@ -1,7 +1,7 @@
 ### Aliases
 # Utils
 alias ls="ls -G"
-alias ll="ls -l -A"
+alias ll="ls -hl -A"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -86,5 +86,18 @@ grep() {
     echo "⚠️  WARNING: Use 'rg' (ripgrep) instead 'grep' for faster searches.\n\n" >&2
   fi
   command grep "$@"
+}
+
+# Interactive file picker using fzf. As the default keybinding ctrl-t can't be used in Warp
+ff() {
+  local files
+
+  # (@) expands into element arrays
+  # (f) split on \n
+  files=("${(@f)$(fzf)}") || return
+
+  # Quote each path safely and join with spaces
+  # (q) quotes each element safely
+  print -z -- "${(q)files[@]}"
 }
 

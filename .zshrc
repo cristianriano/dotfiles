@@ -28,7 +28,7 @@ source "$DOTFILES_HOME/zi-config.zsh"
 source "$DOTFILES_HOME/keybindings.zsh"
 
 
-export FZF_DEFAULT_OPTS="--no-mouse --height=70% --reverse --multi --cycle --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is binary || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -100' --preview-window='right:wrap' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview'"
+export FZF_DEFAULT_OPTS="--no-mouse --height=90% --reverse --multi --cycle --preview-window='right:wrap' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview' --preview='fzf-preview.sh {}'"
 # Not working now
 export FZF_COMPLETION_TRIGGER='~~'
 
@@ -38,6 +38,11 @@ export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 
 # Link keg-only Brew libraries
 export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
+
+# Add iTerm utilities to PATH (imgcat)
+if [[ -d /Applications/iTerm.app/Contents/Resources/utilities ]]; then
+  export PATH="/Applications/iTerm.app/Contents/Resources/utilities:$PATH"
+fi
 
 # Docker default Platform (arm64 if apple silicon)
 #export DOCKER_DEFAULT_PLATFORM=linux/x86_6
