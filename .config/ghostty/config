@@ -6,6 +6,7 @@ font-size = 13
 cursor-style-blink = true
 
 confirm-close-surface = false
+window-inherit-working-directory = true
 
 # background-opacity = 0.9
 window-padding-x = 10,5

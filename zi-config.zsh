@@ -39,6 +39,7 @@ zi wait lucid light-mode depth=1 for \
 # Binds fzf widgets via `bindkey` (ctrl + T | ctrl + R)
 zi snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 # Fzf completion (**<TAB>)
+zi ice wait lucid id-as="fzf-completion"
 zi snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
 
 ## History search

@@ -28,12 +28,25 @@ source "$DOTFILES_HOME/zi-config.zsh"
 source "$DOTFILES_HOME/keybindings.zsh"
 
 
-export FZF_DEFAULT_OPTS="--no-mouse --height=90% --reverse --multi --cycle --preview-window='right:wrap' --bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview' --preview='fzf-preview.sh {}'"
-# Not working now
-export FZF_COMPLETION_TRIGGER='~~'
+export FZF_DEFAULT_OPTS="
+--no-mouse
+--height=90%
+--reverse
+--multi
+--cycle
+--preview-window='right:wrap'
+--bind='ctrl-u:half-page-up,ctrl-d:half-page-down,f2:toggle-preview'
+--preview='fzf-preview.sh {}'"
+export FZF_CTRL_R_OPTS="
+  --no-preview
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'tree -C {}'"
 
 export DISABLE_SPRING=true
-
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
 
 # Link keg-only Brew libraries

@@ -101,3 +101,13 @@ ff() {
   print -z -- "${(q)files[@]}"
 }
 
+# Interactive git branch switcher using fzf
+gg() {
+  local branch
+  branch=$(git branch | grep -v '/HEAD' | sed 's/^[* ]*//' | fzf --height 40% --preview 'git log -5 --oneline {}') || return
+  git checkout "$branch"
+}
+
+printp() {
+  echo $PATH | tr ':' '\n'
+}
