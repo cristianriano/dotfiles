@@ -1,8 +1,8 @@
 # Dotfiles
 
-This repo is a collection of my dotfiles and configurations for zsh, tmux, vim, git and some custom scripts.
+This repo is a collection of my dotfiles and configurations for zsh, tmux, nvim, git and some custom scripts.
 
-Workspace uses [Warp](https://www.warp.dev/) terminal, [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+Workspace uses [Ghostty](https://ghostty.org/) terminal, [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager for shell behaviour.
 
 Files it provides:
@@ -16,7 +16,6 @@ Files it provides:
 - Global .gitattributes, .gitconfig and .gitignore
 - Ruby's .gemrc, .pryrc
 - Elixir's .iex.exs
-- Scripts on Mac for battery, disk usage and temperature
 - .sqliterc (sqlite3)
 - .tmux.conf
 - nvim config
@@ -44,42 +43,14 @@ Things to improve or at least consider and make a decision (in no particular ord
 - Install fonts via Brew (`font-meslo-lg-nerd-font`) instead of zi. Fonts are a system resource not shell specific. (Update README too)
 - Clean up Oh-my-posh. Haven't switched in years
 
-### Elixir
+## Terminals
 
-Installing Elixir requires Erlang too. We will use `asdf` to be able to have multiple versions.
+This setup supports multiple terminals. Below is a section for each.
+All terminals work best with a compatible [Font](#font)
 
-Elixir versioning have `x.y.z-otp-w`, this is a pre-compiled version for W major Erlang version. The
-version without `otp` is that compiled against the oldest OTP release supported by that version. We
-will go with the precompiled version of the major Erlang supported.
+### Ghostty
 
-1. Install dependencies with brew (table below). The only recommended one is `wxmac` to run the observer.
-   Use `brew install --build-from-source wxmac`
-2. Install the latest Erlang compatible with the Elixir version you want `asdf install erlang x.y`
-   (Optional: Install documentation for Erlang modules with `KERL_BUILD_DOCS=yes` used in iex)\
-   **NOTE: When installing OTP < 25 set export KERL_CONFIGURE_OPTIONS="--with-ssl=$(brew --prefix openssl) --without-javac"**
-3. Install elixir precompiled version for the Erlang chosen
-
-| Dependency | Required? | Why install?                                |
-| ---------- | --------- | ------------------------------------------- |
-| fop        | 🚫        | Only for building PDF docs                  |
-| unixodbc   | 🚫        | Only if you use ODBC                        |
-| openjdk    | 🚫        | Already have JDK; optional for Java interop |
-| wxmac      | 🔶        | Optional but recommended for :observer      |
-
-## Terminal
-
-### Font
-
-Terminal needs a Nerd font to allow you see all the icons & glyphs in the prompt.
-
-This setup uses `MesloLGM Nerd Font` which is downloaded automatically and saved in `~/Library/Fonts/`
-by ZI the first time zhell is started.
-
-If the Font is not detected by the system copy+paste them in the _Font Book_
-
-### iTerm
-
-Set the Font by going to _Preferences > Profiles > Text > Font_
+Configuration in `.config/ghostty/config` is picked up by default.
 
 ### Warp
 
@@ -93,6 +64,19 @@ Change the following _Settings_:
 - Sync with OS
 - Solarized Dark & Light
 
+### iTerm
+
+Set the Font by going to _Preferences > Profiles > Text > Font_
+
+#### Font
+
+Terminals needs a Nerd font that allows icons & glyphs in the prompt.
+
+This setup uses `MesloLGM Nerd Font` which is downloaded automatically and saved in `~/Library/Fonts/`
+by ZI the first time zhell is started.
+
+If the Font is not detected by the system copy+paste them in the _Font Book_
+
 #### Known Issues
 
 Because Warp wraps each execution in a block, many plugins for zshell do not work properly. The ones I confirm:
@@ -101,10 +85,14 @@ Because Warp wraps each execution in a block, many plugins for zshell do not wor
 - fzf bindings: Ctrl+T to select multiple files
 - [powerlevel10k "show on command"](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#show-on-command)
 
-### Zhell
+## Shell
 
-This configuration uses [ZI](https://z-shell.pages.dev/) for loading plugins, and leverages the Turbo mode to
-increass loading speed (run `timezsh` for a report from initializing zsh 10 times).
+This setup depends on `zsh` shell. It manages configuration via some files and relays on [ZI](https://z-shell.pages.dev/) from zshell heavily.
+
+### ZI
+
+[ZI](https://z-shell.pages.dev/) is used for loading plugins, leverages Turbo mode to decrease loading speed
+(run `timezsh` to measure zsh initialization 10 times).
 
 List packages and delete them with `zi list` and `zi delete <name>`
 
@@ -124,7 +112,7 @@ To update and compile it run\
 - [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
 - [Power 10K theme](https://github.com/romkatv/powerlevel10k)
 
-## Configurations
+## Other Configurations
 
 ### Keyboard
 
@@ -167,8 +155,6 @@ Used for window management. Set the shortcuts for:
 - Maximize: Cmd+Alt+Ctrl+M
 - Maximize on next monitor: Cmd+Alt+Ctrl+Up
 
-## Cheatsheet
-
 ### Vim
 
 There is a minimalistic Vim setup using [vim-plug](https://github.com/junegunn/vim-plug).
@@ -176,17 +162,31 @@ Install plugins with `:PlugInstall` (make sure to install **any node and java ve
 
 To install new plugins add them to `.vimrc` and run `:PlugInstall` in vim
 
-### ASDF
+## Cheatsheet
 
-Available plugins [here](https://github.com/asdf-vm/asdf-plugins)
+### Elixir
 
-- Update all plugins\
-  `asdf plugin update --all`
+Installing Elixir requires Erlang too. We will use `asdf` to be able to have multiple versions.
 
-- Reshim
-  `asdf reshim`
+Elixir versioning have `x.y.z-otp-w`, this is a pre-compiled version for W major Erlang version. The
+version without `otp` is that compiled against the oldest OTP release supported by that version. We
+will go with the precompiled version of the major Erlang supported.
 
-#### Direnv
+1. Install dependencies with brew (table below). The only recommended one is `wxmac` to run the observer.
+   Use `brew install --build-from-source wxmac`
+2. Install the latest Erlang compatible with the Elixir version you want `asdf install erlang x.y`
+   (Optional: Install documentation for Erlang modules with `KERL_BUILD_DOCS=yes` used in iex)\
+   **NOTE: When installing OTP < 25 set export KERL_CONFIGURE_OPTIONS="--with-ssl=$(brew --prefix openssl) --without-javac"**
+3. Install elixir precompiled version for the Erlang chosen
+
+| Dependency | Required? | Why install?                                |
+| ---------- | --------- | ------------------------------------------- |
+| fop        | 🚫        | Only for building PDF docs                  |
+| unixodbc   | 🚫        | Only if you use ODBC                        |
+| openjdk    | 🚫        | Already have JDK; optional for Java interop |
+| wxmac      | 🔶        | Optional but recommended for :observer      |
+
+### Direnv
 
 Direnv loads env variables when navigating to a folder with `.envrc`
 

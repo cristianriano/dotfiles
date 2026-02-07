@@ -12,6 +12,8 @@ brew 'automake'
 brew 'awscli'
 # cat with syntax highlight
 brew 'bat'
+# Terminal image viewer
+brew 'chafa'
 brew 'cmake'
 brew 'coreutils'
 # Transfer URL
@@ -81,11 +83,13 @@ brew 'wget'
 brew 'zoxide'
 # UNIX shell (command interpreter)
 brew 'zsh'
-## Casks
+
+## Casks ##
 cask 'alfred'
 # cask 'brave-browser'
 cask 'caffeine'
 # cask 'docker' # If docker desktop is available
+cask 'ghostty'
 cask 'google-chrome'
 cask 'intellij-idea-ce'
 cask 'iterm2'
