@@ -47,6 +47,12 @@ zi light-mode for \
   z-shell/H-S-MW \
   zsh-users/zsh-history-substring-search
 
+# Select text in the command line using <Shift> as in many text editors
+## Because Terminals intercept Cmd+{c,v,x} it can't copy selected text
+## Only works in the kill-ring buffer with ctrl+w and ctrl+y (yank)
+zi ice id-as="shift-select"
+zi light jirutka/zsh-shift-select
+
 # ZI plugin for diff-so-fancy https://github.com/z-shell/zsh-diff-so-fancy
 zi ice wait lucid as'program' pick'bin/git-dsf'
 zi load z-shell/zsh-diff-so-fancy

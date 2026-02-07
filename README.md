@@ -103,6 +103,7 @@ To update and compile it run\
 
 - [Autosuggestions Fish style](https://github.com/zsh-users/zsh-autosuggestions)
 - [Additional completions for zsh](https://github.com/zsh-users/zsh-completions)
+- [Select text in the command line using <Shift>](https://github.com/jirutka/zsh-shift-select)
 - [Prezto completions](https://github.com/sorin-ionescu/prezto/tree/master/modules/completion)
 - [Auto pair/delete delimiters](https://github.com/hlissner/zsh-autopair)
 - [ASDF - Version Manager](https://github.com/asdf-vm/asdf)

@@ -6,6 +6,15 @@
 # `^[[A`: Arrow UP
 # `^[[B`: Arrow DOWN
 
+# Use emacs-style line editing
+# Required for `zsh-shift-select` plugin
+bindkey -e
+
+# zsh-shift-select overrides
+# Shift + Cmd + Left / Right (macOS sends ;10)
+bindkey '^[[1;10D' shift-select::beginning-of-line
+bindkey '^[[1;10C' shift-select::end-of-line
+
 # Cmd <-/-> for beginning/end of line
 # Alt <-/-> move one word backfward/forward
 bindkey '^[b' backward-word
