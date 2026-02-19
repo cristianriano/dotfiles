@@ -52,8 +52,6 @@ brew 'mycli'
 # Open source relational database management system
 brew 'mysql-client'
 brew 'nvim'
-# Prompt theme
-# brew 'oh-my-posh'
 # Postgres CLI with auto-completion and syntax highlighting (https://www.pgcli.com)
 brew 'pgcli'
 # Compile .proto files

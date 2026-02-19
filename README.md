@@ -41,7 +41,7 @@ Files it provides:
 Things to improve or at least consider and make a decision (in no particular order)
 
 - Install fonts via Brew (`font-meslo-lg-nerd-font`) instead of zi. Fonts are a system resource not shell specific. (Update README too)
-- Clean up Oh-my-posh. Haven't switched in years
+- Update `zi` installation to use new standard https://wiki.zshell.dev/docs/getting_started/installation
 
 ## Terminals
 

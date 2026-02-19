@@ -64,18 +64,13 @@ zi ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
   atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
 zi light ryanoasis/nerd-fonts
 
-# Use either Oh-My-Posh or Powerlevel10k (default) for rendering depending on the Terminal
-if [ "$TERM_PROGRAM" = "WarpTerminal" ] && [ "$DISABLE_OH_MY_POSH" != "1" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh.omp.json)"
-  # eval "$(starship init zsh)"
-else
-  zi ice depth=1; zi load romkatv/powerlevel10k
-  # Use full config for suported terminals and lean config for other embeded terminals
-  if [[ "$TERM_PROGRAM" =~ ^(ghostty|WarpTerminal|iTerm\.app)$ && -f ~/.p10k.zsh ]]; then
-    source ~/.p10k.zsh
-  elif [[ -f ~/.p10k-lean.zsh ]]; then
-    source ~/.p10k-lean.zsh
-  fi
+## Theme - Powerlevel10k
+zi ice depth=1; zi load romkatv/powerlevel10k
+# Use full config for primary terminals (Ghostty, Warp, iTerm2), lean config for editors
+if [[ "$TERM_PROGRAM" =~ ^(ghostty|WarpTerminal|iTerm\.app)$ && -f ~/.p10k.zsh ]]; then
+  source ~/.p10k.zsh
+elif [[ -f ~/.p10k-lean.zsh ]]; then
+  source ~/.p10k-lean.zsh
 fi
 
 ## Version Managers
