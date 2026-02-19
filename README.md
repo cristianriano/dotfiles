@@ -46,7 +46,13 @@ Things to improve or at least consider and make a decision (in no particular ord
 ## Terminals
 
 This setup supports multiple terminals. Below is a section for each.
-All terminals work best with a compatible [Font](#font)
+
+All terminals needs a Nerd font that allows icons & glyphs in the prompt.
+
+This setup uses `MesloLGM Nerd Font` which is downloaded automatically and saved in `~/Library/Fonts/`
+by ZI the first time zhell is started.
+
+If the Font is not detected by the system copy+paste them in the _Font Book_
 
 ### Ghostty
 
@@ -64,19 +70,6 @@ Change the following _Settings_:
 - Sync with OS
 - Solarized Dark & Light
 
-### iTerm
-
-Set the Font by going to _Preferences > Profiles > Text > Font_
-
-#### Font
-
-Terminals needs a Nerd font that allows icons & glyphs in the prompt.
-
-This setup uses `MesloLGM Nerd Font` which is downloaded automatically and saved in `~/Library/Fonts/`
-by ZI the first time zhell is started.
-
-If the Font is not detected by the system copy+paste them in the _Font Book_
-
 #### Known Issues
 
 Because Warp wraps each execution in a block, many plugins for zshell do not work properly. The ones I confirm:
@@ -84,6 +77,10 @@ Because Warp wraps each execution in a block, many plugins for zshell do not wor
 - zsh-autopair: Auto pair/delete delimiters
 - fzf bindings: Ctrl+T to select multiple files
 - [powerlevel10k "show on command"](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#show-on-command)
+
+### iTerm
+
+Set the Font by going to _Preferences > Profiles > Text > Font_
 
 ## Shell
 

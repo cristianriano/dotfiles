@@ -70,8 +70,11 @@ if [ "$TERM_PROGRAM" = "WarpTerminal" ] && [ "$DISABLE_OH_MY_POSH" != "1" ]; the
   # eval "$(starship init zsh)"
 else
   zi ice depth=1; zi load romkatv/powerlevel10k
-  if [[ ($(ps -p $PPID) =~ 'Visual Studio') && (-f ~/.p10k-lean.zsh) ]] then; source ~/.p10k-lean.zsh
-  elif [[ -f ~/.p10k.zsh ]] then; source ~/.p10k.zsh
+  # Use full config for suported terminals and lean config for other embeded terminals
+  if [[ "$TERM_PROGRAM" =~ ^(ghostty|WarpTerminal|iTerm\.app)$ && -f ~/.p10k.zsh ]]; then
+    source ~/.p10k.zsh
+  elif [[ -f ~/.p10k-lean.zsh ]]; then
+    source ~/.p10k-lean.zsh
   fi
 fi
 
