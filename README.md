@@ -78,9 +78,14 @@ Because Warp wraps each execution in a block, many plugins for zshell do not wor
 - fzf bindings: Ctrl+T to select multiple files
 - [powerlevel10k "show on command"](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#show-on-command)
 
-### iTerm
+### iTerm2
 
-Set the Font by going to _Preferences > Profiles > Text > Font_
+To import the settings:
+
+1. Go to _Settings > General > Settings_
+2. Check the `Load settings from a custom folder or URL` option
+3. Select the path where this repo was cloned, it will automatically pick the `com.googlecode.iterm2.plist` file
+4. Restart iTerm2
 
 ## Shell
 

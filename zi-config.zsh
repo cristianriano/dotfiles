@@ -67,7 +67,7 @@ zi light ryanoasis/nerd-fonts
 ## Theme - Powerlevel10k
 zi ice depth=1; zi load romkatv/powerlevel10k
 # Use full config for primary terminals (Ghostty, Warp, iTerm2), lean config for editors
-if [[ "$TERM_PROGRAM" =~ ^(ghostty|WarpTerminal|iTerm\.app)$ && -f ~/.p10k.zsh ]]; then
+if [[ "$TERM_PROGRAM" =~ ^(tmux|ghostty|WarpTerminal|iTerm\.app)$ && -f ~/.p10k.zsh ]]; then
   source ~/.p10k.zsh
 elif [[ -f ~/.p10k-lean.zsh ]]; then
   source ~/.p10k-lean.zsh

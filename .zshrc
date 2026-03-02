@@ -29,7 +29,7 @@ source "$DOTFILES_HOME/keybindings.zsh"
 
 export FZF_DEFAULT_OPTS="
 --no-mouse
---height=90%
+--height=75%
 --reverse
 --multi
 --cycle
