@@ -86,6 +86,8 @@ brew 'zsh'
 cask 'alfred'
 # cask 'brave-browser'
 cask 'caffeine'
+cask 'claude-code'
+cask 'codex'
 # cask 'docker' # If docker desktop is available
 cask 'ghostty'
 cask 'google-chrome'

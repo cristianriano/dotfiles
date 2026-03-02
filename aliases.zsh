@@ -74,6 +74,23 @@ config_link() {
   done
 }
 
+# Agent skills
+skills_link() {
+  skills_path="$HOME/.agents/skills"
+  if [[ ! -d $skills_path ]]; then
+    echo "$skills_path not found"
+    return 1
+  fi
+
+  for s in "$skills_path"/*; do
+    name="$(basename "$s")"
+
+    # Add any other Agents here
+    [[ -d "$HOME/.claude" ]] && ln -sfn $s "$HOME/.claude/skills/$name"
+    [[ -d "$HOME/.codex" ]] && ln -sfn $s "$HOME/.codex/skills/$name"
+  done
+}
+
 # Time Zshell loading time
 timezsh() {
   shell=${1-$SHELL}
