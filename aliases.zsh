@@ -47,10 +47,10 @@ alias k="kubectl"
 ### Functions
 # Dotfiles
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-declare -a dotfiles=(.gemrc .vimrc .zshrc .zshenv .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs .iex.exs .default-mix-commands .sqliterc .local/bin .taskrc)
+declare -a dotfiles=(.gemrc .vimrc .zshrc .zshenv .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs .default-npm-packages .default-mix-commands .iex.exs  .sqliterc .local/bin .taskrc)
 
 dotfiles_link() {
-  for file in $dotfiles; do ln -f -s $DOTFILES_HOME/$file $HOME/$file; done
+  for file in $dotfiles; do ln -sfn $DOTFILES_HOME/$file $HOME/$file; done
 }
 
 dotfiles_unlink() {
@@ -69,7 +69,7 @@ config_link() {
   for f in $(ls -1 $DOTFILES_HOME/.config); do
     # If file exists regarding of the type (check man test for more options)
     if [[ ! -e $HOME/.config/$f ]]; then
-      ln -f -s $DOTFILES_HOME/.config/$f $HOME/.config/$f
+      ln -sfn $DOTFILES_HOME/.config/$f $HOME/.config/$f
     fi
   done
 }
@@ -81,6 +81,8 @@ skills_link() {
     echo "$skills_path not found"
     return 1
   fi
+
+  [[ -d "$HOME/.claude" ]] && ln -sfn $HOME/.agents/settings.json $HOME/.claude/settings.json
 
   for s in "$skills_path"/*; do
     name="$(basename "$s")"
