@@ -1,6 +1,7 @@
 # Dotfiles
 
 This repo is a collection of my dotfiles and configurations for zsh, tmux, nvim, git and some custom scripts.
+It's meant to be used in a Mac. A limited version is available for [Linux](#linux-ubuntu-server)
 
 Workspace uses [Ghostty](https://ghostty.org/) terminal, [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager for shell behaviour.
@@ -8,7 +9,8 @@ theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager for shell be
 Files it provides:
 
 - aliases.zsh (custom aliases and functions)
-- zi-config.zsh (plugin installation and configuration for zi. Only affects interactive zsh)
+- base-zi.zsh (core ZI plugins, loaded on all OSes)
+- mac-zi.zsh (macOS-only: Nerd Font + Powerlevel10k theme)
 - keybindings.zsh
 - .p10k.zsh and .p10k-lean.zsh (full and lite config for theme)
 - .asdfrc and .default-\* (for asdf config and plugins)
@@ -42,6 +44,7 @@ Things to improve or at least consider and make a decision (in no particular ord
 
 - Install fonts via Brew (`font-meslo-lg-nerd-font`) instead of zi. Fonts are a system resource not shell specific. (Update README too)
 - Update `zi` installation to use new standard https://wiki.zshell.dev/docs/getting_started/installation
+- Link all `.*` files for the dotfiles_link function to avoid mantaining a `dotfiles` var
 
 ## Terminals
 
@@ -240,6 +243,24 @@ git diff --diff-filter AM --name-only --staged | grep "\.rb$" | xargs bundle exe
 
 - Buld with custom cache
   `docker buildx build --tag mytag:1.0 --file Dockerfile --cache-from=type=local,src=/tmp/.buildx-cache --cache-to=type=local,dest=/tmp/.buildx-cache .`
+
+## Linux (Ubuntu Server)
+
+This setup also works on Linux (tested on Ubuntu). The config detects the OS via `IS_MAC` (set in `.zshenv`) and adjusts automatically.
+
+### Prerequisites
+
+Install these manually (no Brewfile equivalent):
+
+```bash
+sudo apt install zsh zoxide fzf ripgrep diff-so-fancy xclip
+```
+
+### What works differently
+
+- **Clipboard** — `pbcopy`/`pbpaste` are aliased to `xclip` so fzf's ctrl-y and other scripts work
+- **Homebrew paths** — skipped entirely (mysql-client, iTerm utilities, etc.)
+- **Nerd Font** — not downloaded. The SSH client's font is what matters on a headless server
 
 ## Known Issues
 

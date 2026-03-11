@@ -17,15 +17,35 @@ SQLITE_HISTORY="~/.sqlite_history"
 setopt beep inc_append_history share_history interactivecomments hist_ignore_dups
 autoload colors && colors
 
-## Brew config
-HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
-
 ## ZI plugins, keybindings, aliases and functions
-DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
 source "$DOTFILES_HOME/aliases.zsh"
-source "$DOTFILES_HOME/zi-config.zsh"
+source "$DOTFILES_HOME/base-zi.zsh"
 source "$DOTFILES_HOME/keybindings.zsh"
 
+## macOS customizations
+if $IS_MAC; then
+  # Sets Brew config. Use /opt/homebrew/bin/ for M1 otherwise /usr/local/bin/
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  source "$DOTFILES_HOME/mac-zi.zsh"
+
+  HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+
+  # Link keg-only Brew libraries
+  export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
+
+  # Add iTerm utilities to PATH (imgcat)
+  if [[ -d /Applications/iTerm.app/Contents/Resources/utilities ]]; then
+    export PATH="/Applications/iTerm.app/Contents/Resources/utilities:$PATH"
+  fi
+fi
+
+## Linux customizations
+if ! $IS_MAC; then
+  # Clipboard support: alias pbcopy/pbpaste so scripts and keybindings work on both OSes
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi
 
 export FZF_DEFAULT_OPTS="
 --no-mouse
@@ -47,14 +67,6 @@ export FZF_ALT_C_OPTS="
 
 export DISABLE_SPRING=true
 export RIPGREP_CONFIG_PATH=~/.ripgrep.config
-
-# Link keg-only Brew libraries
-export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
-
-# Add iTerm utilities to PATH (imgcat)
-if [[ -d /Applications/iTerm.app/Contents/Resources/utilities ]]; then
-  export PATH="/Applications/iTerm.app/Contents/Resources/utilities:$PATH"
-fi
 
 # Docker default Platform (arm64 if apple silicon)
 #export DOCKER_DEFAULT_PLATFORM=linux/x86_6

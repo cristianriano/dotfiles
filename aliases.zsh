@@ -1,19 +1,17 @@
 ### Aliases
 # Utils
-alias ls="ls -G"
-alias ll="ls -hl -A"
+alias ls="ls -G --color=auto"
+alias ll="ls -hl -A --color=auto"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-#alias rm="rm -i"
-alias j='fasd_cd -i' # Change dir interactively
 #alias cat="bat"
 alias n="nvim"
 # Docker
-alias postgres_config="docker create --name postgres -p 5432:5432 -v "$HOME/code/volumes:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6"
-alias dockredis="docker run -d --rm --name redis -p 6379:6379 -v "$HOME/code/volumes/redis:/data" redis:latest"
-alias dockpostgres11="docker run -d --rm --name postgres11 -p 5432:5432 -v "$HOME/code/data11:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11"
-alias dockmysql57="docker run -d --rm --name mysql57 -p 3307:3306 -v "$HOME/code/volumes/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD=password mysql:5.7"
+alias postgres_config='docker create --name postgres -p 5432:5432 -v "$HOME/code/volumes:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password POSTGRES_HOST_AUTH_METHOD=trust postgres:10.6'
+alias dockredis='docker run -d --rm --name redis -p 6379:6379 -v "$HOME/code/volumes/redis:/data" redis:latest'
+alias dockpostgres11='docker run -d --rm --name postgres11 -p 5432:5432 -v "$HOME/code/data11:/var/lib/postgresql/data" -e POSTGRES_PASSWORD=password -e POSTGRES_HOST_AUTH_METHOD=trust postgres:11'
+alias dockmysql57='docker run -d --rm --name mysql57 -p 3307:3306 -v "$HOME/code/volumes/mysql:/var/lib/mysql" -e MYSQL_ROOT_PASSWORD=password mysql:5.7'
 # Git
 alias g="git"
 alias gst="git status"
@@ -65,12 +63,14 @@ dotfiles_unlink() {
 
 # Config folder
 config_link() {
-  mkdir -p $HOME/.config
-  for f in $(ls -1 $DOTFILES_HOME/.config); do
-    # If file exists regarding of the type (check man test for more options)
-    if [[ ! -e $HOME/.config/$f ]]; then
-      ln -sfn $DOTFILES_HOME/.config/$f $HOME/.config/$f
-    fi
+  local src_dir="$DOTFILES_HOME/.config"
+  local dst_dir="$HOME/.config"
+
+  mkdir -p "$dst_dir"
+
+  for s in "$src_dir"/*; do
+    name="$(basename "$s")"
+    ln -sfn "$s" "$dst_dir/$name"
   done
 }
 

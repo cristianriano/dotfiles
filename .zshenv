@@ -1,6 +1,12 @@
 # ALWAYS sourced. Often contains exported variables that should be available to other programs (e.g $PATH, $EDITOR, and $PAGER)
 
 #
+# OS Detection
+#
+[[ "$OSTYPE" == darwin* ]] && IS_MAC=true || IS_MAC=false
+export IS_MAC
+
+#
 # Editors
 #
 export EDITOR=nvim
@@ -16,7 +22,7 @@ export PAGER=less
 # Skip potentially early compinit. Instead handled manually when installing `zsh-completions` in zi-config.zsh
 skip_global_compinit=1
 export DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-export SHELL='/opt/homebrew/bin/zsh'
+export SHELL="${commands[zsh]}"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export MANPATH="/usr/share/man"
 

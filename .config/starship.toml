@@ -28,7 +28,7 @@ $character
 
 right_format = '$all'
 
-add_newline = false
+add_newline = true
 # command_timeout = 1000
 
 [character]
@@ -37,7 +37,7 @@ error_symbol   = '[ ✗](#E84D44) '
 
 [directory]
 truncate_to_repo = true
-format           = "[░▒▓](fg:4)[ ﱮ $path ]($style)"
+format           = "[░▒▓](fg:4)[ $path ]($style)"
 style            = "fg:254 bg:4"
 
 [git_branch]
@@ -66,7 +66,7 @@ disabled = true
 
 [time]
 disabled = false
-format = "[  $time  ]($style)"
+format = "[  $time  ]($style)"
 time_format = "%R" # Hour:Minute Format
 
 [cmd_duration]

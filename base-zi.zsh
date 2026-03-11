@@ -58,11 +58,10 @@ zi light jirutka/zsh-shift-select
 zi ice wait lucid as'program' pick'bin/git-dsf'
 zi load z-shell/zsh-diff-so-fancy
 
-## Theme
-# Font
-zi ice id-as"meslo" from"gh-r" as"null" bpick"Meslo.zip" extract depth=1 \
-  atclone="rm -f *Windows*; mv -f *.ttf $HOME/Library/Fonts/" atpull"%atclone"
-zi light ryanoasis/nerd-fonts
+## Version Managers
+# Tarball with the bin-gem-node annex-utilizing ice list
+# zi wait"1" lucid pack"bgn" depth=1 for pyenv
+# lucid: Removes `loaded` message for async
 
 ## Theme - Powerlevel10k
 zi ice depth=1; zi load romkatv/powerlevel10k
@@ -72,11 +71,6 @@ if [[ "$TERM_PROGRAM" =~ ^(tmux|ghostty|WarpTerminal|iTerm\.app)$ && -f ~/.p10k.
 elif [[ -f ~/.p10k-lean.zsh ]]; then
   source ~/.p10k-lean.zsh
 fi
-
-## Version Managers
-# Tarball with the bin-gem-node annex-utilizing ice list
-# zi wait"1" lucid pack"bgn" depth=1 for pyenv
-# lucid: Removes `loaded` message for async
 
 # Syntax highlight must be the last one
 zi wait lucid for id-as="fast-highlight" z-shell/F-SY-H
