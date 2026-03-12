@@ -15,23 +15,15 @@ endif
 call plug#begin()
 
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/seoul256.vim'
+Plug 'ghifarit53/tokyonight-vim', { 'branch': 'master' }
 Plug 'tpope/vim-sensible'
 
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-signify'
-
-Plug 'valloric/youcompleteme', {
-  \ 'do': 'cd ~/.vim/plugged/youcompleteme && python3 install.py --go-completer --ts-completer --java-comple'
-  \ }
 Plug 'slashmili/alchemist.vim'
 
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'wincent/command-t', {
-  \ 'do': 'cd ruby/command-t/ext/command-t &&
-  \ /usr/local/opt/ruby/bin/ruby extconf.rb && make'
-  \ }
 
 Plug 'mechatroner/rainbow_csv'
 
@@ -78,25 +70,26 @@ set switchbuf=useopen,usetab
 set autowriteall
 au TabLeave * :wa
 
-colo seoul256
+set termguicolors
+let g:tokyonight_style = 'storm'
+colo tokyonight
 
-let &t_SI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\" " Different cursor while in insert and command mode
-let &t_EI="\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+"" Cursor shape: block in normal mode, thin line in insert mode
+let &t_SI="\e[6 q"
+let &t_EI="\e[2 q"
 
 let NERDTreeShowHidden=1
 
-let g:CommandTAcceptSelectionCommand='CommandTOpen tabe'
+"" Keybindings (Space leader like LazyVim)
+let mapleader=' '
 
-"" Keybindings
-let mapleader='`'
-
-noremap <leader>t :NERDTreeToggle <CR>
+noremap <leader>e :NERDTreeToggle <CR>
 noremap <leader>f :NERDTreeFind <CR>
-noremap <leader>p :CommandT <CR>
+
+noremap <leader><space> :FZF <CR>
+noremap <leader>o :FZF <CR>
 
 noremap <leader>n :tabnew <CR>
 noremap <leader>w :tabclose <CR>
 noremap <leader>[ :tabprevious <CR>
 noremap <leader>] :tabnext <CR>
-
-noremap <leader>o :FZF <CR>

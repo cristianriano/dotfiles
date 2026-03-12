@@ -42,6 +42,9 @@ fi
 
 ## Linux customizations
 if ! $IS_MAC; then
+  # Use lightweight vim instead of nvim+LazyVim for quick edits
+  alias n="vim"
+
   # Clipboard support: alias pbcopy/pbpaste so scripts and keybindings work on both OSes
   alias pbcopy='xclip -selection clipboard'
   alias pbpaste='xclip -selection clipboard -o'

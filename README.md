@@ -163,10 +163,19 @@ Used for window management. Set the shortcuts for:
 
 ### Vim
 
-There is a minimalistic Vim setup using [vim-plug](https://github.com/junegunn/vim-plug).
-Install plugins with `:PlugInstall` (make sure to install **any node and java version** before otherwise **YouCompleteMe** plugin will fail)
+Lightweight Vim setup using [vim-plug](https://github.com/junegunn/vim-plug) with TokyoNight Storm theme.
 
-To install new plugins add them to `.vimrc` and run `:PlugInstall` in vim
+Plugins auto-install on first launch. To manually install: `:PlugInstall`
+
+Plugins:
+
+- [NERDTree](https://github.com/preservim/nerdtree) — File explorer sidebar
+- [fzf](https://github.com/junegunn/fzf) — Fuzzy file finder
+- [vim-signify](https://github.com/mhinz/vim-signify) — Git diff signs in the gutter
+- [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) — Sublime-style multiple selections
+- [vim-sensible](https://github.com/tpope/vim-sensible) — Universal sensible defaults
+- [rainbow_csv](https://github.com/mechatroner/rainbow_csv) — Highlight CSV columns in different colors
+- [TokyoNight](https://github.com/ghifarit53/tokyonight-vim) — Color scheme (storm variant)
 
 ## Cheatsheet
 
