@@ -8,24 +8,12 @@ theme and [zi from zshell](https://wiki.zshell.dev/) plugin manager for shell be
 
 Files it provides:
 
-- aliases.zsh (custom aliases and functions)
-- base-zi.zsh (core ZI plugins, loaded on all OSes)
-- mac-zi.zsh (macOS-only: Nerd Font + Powerlevel10k theme)
-- keybindings.zsh
-- .p10k.zsh and .p10k-lean.zsh (full and lite config for theme)
-- .asdfrc and .default-\* (for asdf config and plugins)
-- Brewfile (binaries and system resources)
-- Global .gitattributes, .gitconfig and .gitignore
-- Ruby's .gemrc, .pryrc
-- Elixir's .iex.exs
-- .sqliterc (sqlite3)
-- .tmux.conf
-- nvim config
-- Zsh configs (in execution orderder)
-  - .zshenv
-  - .zprofile
-  - .zshrc
-  - .zlogin
+- `home/` — All dotfiles symlinked to `$HOME` (`.zshrc`, `.gitconfig`, `.tmux.conf`, `.p10k.zsh`, `.asdfrc`, `.default-*`, etc.)
+- `.local/bin/` — Custom scripts linked individually into `~/.local/bin/`
+- `.config/` — XDG configs (nvim, ghostty, direnv, starship)
+- aliases.zsh, base-zi.zsh, mac-zi.zsh, keybindings.zsh — ZSH modules sourced by `.zshrc`
+- Brewfile — binaries and system resources
+- Global `.gitignore` (linked from repo root)
 
 ## Installation
 
@@ -44,7 +32,6 @@ Things to improve or at least consider and make a decision (in no particular ord
 
 - Install fonts via Brew (`font-meslo-lg-nerd-font`) instead of zi. Fonts are a system resource not shell specific. (Update README too)
 - Update `zi` installation to use new standard https://wiki.zshell.dev/docs/getting_started/installation
-- Link all `.*` files for the dotfiles_link function to avoid mantaining a `dotfiles` var
 
 ## Terminals
 

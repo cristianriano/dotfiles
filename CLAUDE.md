@@ -17,7 +17,8 @@ Personal dotfiles repository managing shell configuration, terminal settings, ed
 
 ### File Organization
 
-- **Root dotfiles**: Traditional dotfiles (.zshrc, .gitconfig, .tmux.conf, etc.) - linked via `dotfiles_link`
+- **home/**: Dotfiles to be symlinked to `$HOME` (.zshrc, .gitconfig, .tmux.conf, etc.) - linked via `dotfiles_link`. Drop a file here and it gets linked automatically.
+- **.local/bin/**: Scripts linked individually into `~/.local/bin/` by `dotfiles_link`
 - **.config/**: XDG Base Directory compliant configs (nvim, ghostty, direnv, starship) - linked via `config_link`
 - **Custom ZSH modules** (sourced in .zshrc):
   - `aliases.zsh` - Custom aliases and shell functions
@@ -61,7 +62,7 @@ Uses LazyVim framework. Configuration in `.config/nvim/` with lua files for opti
 ```bash
 # After cloning repo, symlink dotfiles and config directories
 source aliases.zsh
-dotfiles_link  # Links root dotfiles to $HOME
+dotfiles_link  # Links home/* to $HOME and .local/bin/* to ~/.local/bin/
 config_link    # Links .config/* to $HOME/.config/
 
 # macOS: Install all dependencies
@@ -81,8 +82,9 @@ dotfiles_link      # Create symlinks for all dotfiles
 dotfiles_unlink    # Remove symlinks for all dotfiles
 config_link        # Create symlinks for .config/ files
 
-# Test what files would be linked
-declare -a dotfiles  # See aliases.zsh:48 for current list
+# Preview what would be linked
+ls $DOTFILES_HOME/home/.*     # Dotfiles
+ls $DOTFILES_HOME/.local/bin/ # Scripts
 ```
 
 ### ZI Plugin Management
@@ -126,9 +128,8 @@ Custom FZF options set in .zshrc:
 
 ### Adding New Dotfiles
 
-1. Add file to `$DOTFILES_HOME/` directory
-2. Add filename to `dotfiles` array in `aliases.zsh:48`
-3. Run `dotfiles_link` to create symlink
+1. Add file to `$DOTFILES_HOME/home/` directory (or `.local/bin/` for scripts)
+2. Run `dotfiles_link` to create symlink (no array to update — everything in `home/` is linked automatically)
 
 ### Adding ZI Plugins
 

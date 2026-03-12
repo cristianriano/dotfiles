@@ -45,19 +45,33 @@ alias k="kubectl"
 ### Functions
 # Dotfiles
 DOTFILES_HOME=${DOTFILES_HOME:-"$HOME/dotfiles"}
-declare -a dotfiles=(.gemrc .vimrc .zshrc .zshenv .zprofile .zlogin .tmux.conf .p10k.zsh .p10k-lean.zsh .pryrc .gitignore .gitconfig .gitattributes .asdfrc .gitmessage .spacemacs .ripgrep.config .default-python-packages .default-gems .default-golang-pkgs .default-npm-packages .default-mix-commands .iex.exs  .sqliterc .local/bin .taskrc)
 
 dotfiles_link() {
-  for file in $dotfiles; do ln -sfn $DOTFILES_HOME/$file $HOME/$file; done
+  for file in "$DOTFILES_HOME"/home/.*; do
+    [[ "$(basename "$file")" == "." || "$(basename "$file")" == ".." ]] && continue
+    ln -sfn "$file" "$HOME/$(basename "$file")"
+  done
+
+  ln -sfn "$DOTFILES_HOME/.gitignore" "$HOME/.gitignore"
+
+  mkdir -p "$HOME/.local/bin"
+  for file in "$DOTFILES_HOME"/.local/bin/*; do
+    ln -sfn "$file" "$HOME/.local/bin/$(basename "$file")"
+  done
 }
 
 dotfiles_unlink() {
-  for file in $dotfiles
-  do
-    local file_path="$HOME/$file"
-    if [[ -h $file_path ]]; then unlink $file_path
-    elif [[ -f $file_path ]]; then rm -f $file_path
-    fi
+  for file in "$DOTFILES_HOME"/home/.*; do
+    [[ "$(basename "$file")" == "." || "$(basename "$file")" == ".." ]] && continue
+    local file_path="$HOME/$(basename "$file")"
+    [[ -h "$file_path" ]] && unlink "$file_path"
+  done
+
+  [[ -h "$HOME/.gitignore" ]] && unlink "$HOME/.gitignore"
+
+  for file in "$DOTFILES_HOME"/.local/bin/*; do
+    local file_path="$HOME/.local/bin/$(basename "$file")"
+    [[ -h "$file_path" ]] && unlink "$file_path"
   done
 }
 
