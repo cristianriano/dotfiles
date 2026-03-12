@@ -26,5 +26,8 @@ bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 
 # history-substring-search to use UP and DOWN
+# ^[[A/^[[B = normal mode (macOS), ^[OA/^[OB = application mode (Linux/SSH terminfo)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
