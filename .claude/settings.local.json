@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh issue:*)",
+      "WebFetch(domain:zsh.sourceforge.io)",
+      "WebFetch(domain:invisible-island.net)",
+      "WebFetch(domain:wiki.archlinux.org)"
+    ]
+  }
+}
