@@ -9,8 +9,13 @@ export IS_MAC
 #
 # Editors
 #
-export EDITOR=nvim
-export VISUAL=code
+if $IS_MAC; then
+  export VISUAL=code
+  export EDITOR=nvim
+else
+  export EDITOR=vim
+fi
+export GIT_EDITOR=vim
 export PAGER=less
 
 #

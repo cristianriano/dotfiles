@@ -84,7 +84,7 @@ brew 'zsh'
 
 ## Casks ##
 cask 'alfred'
-# cask 'brave-browser'
+cask 'brave-browser'
 cask 'caffeine'
 cask 'claude-code'
 cask 'codex'

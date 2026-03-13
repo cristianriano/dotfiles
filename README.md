@@ -18,7 +18,7 @@ Files it provides:
 ## Installation
 
 1. Install [Brew](https://brew.sh/) (This will also install dev tools if missing e.g `git`)
-2. Create a new ssh-key `ssh-keygen -t rsa -C "<email>" -b 4096` and add it as your default identity `ssh-add ~/.ssh/id_rsa`
+2. Create a new ssh-key `ssh-keygen -t ed25519 -C "<email>"` and add it as your default identity `ssh-add ~/.ssh/id_rsa`
 3. Clone the repo `git clone https://github.com/cristianriano/dotfiles.git ~/dotfiles`
 4. Run `source aliases.zsh` and then the functions `dotfiles_link` and `config_link` on the shell
 5. Run `brew bundle` inside the repo (check commented dependencies if needed)
