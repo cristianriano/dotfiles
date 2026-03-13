@@ -137,8 +137,13 @@ ff() {
 # Interactive git branch switcher using fzf
 gg() {
   local branch
-  branch=$(git branch | grep -v '/HEAD' | sed 's/^[* ]*//' | fzf --height 40% --preview 'git log -5 --oneline {}') || return
-  git checkout "$branch"
+  if [[ "$1" == "--remote" || "$1" == "-r" ]]; then
+    branch=$(git branch -r | grep -v '/HEAD' | sed 's/^[* ]*//' | fzf --height 40% --preview 'git log -5 --oneline {}') || return
+    git checkout --track "$branch"
+  else
+    branch=$(git branch | grep -v '/HEAD' | sed 's/^[* ]*//' | fzf --height 40% --preview 'git log -5 --oneline {}') || return
+    git checkout "$branch"
+  fi
 }
 
 printp() {
